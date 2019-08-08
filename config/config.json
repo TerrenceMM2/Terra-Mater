@@ -1,7 +1,11 @@
 {
   "development": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "username": "kkullsiurwp5k0fw",
+    "password": "q0d7uajkuuuf4urt",
+    "database": "aod3ytrvzkd08xqu",
+    "host": "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
   },
   "test": {
     "username": "root",
