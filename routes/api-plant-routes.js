@@ -5,7 +5,7 @@ module.exports = function(app) {
     // @READ route gets all plant data
     app.get("/api/plant", function(req, res) {
 
-        db.Plant.findAll({}).then(function(results) {
+        db.Plants.findAll({}).then(function(results) {
             res.json(results);
         });
 
