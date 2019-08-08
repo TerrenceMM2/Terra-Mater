@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     var Plant = sequelize.define('Plants', {
+        plantId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true
+        },
         commonName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -50,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
         sunlight: {
             type: DataTypes.TEXT,
             allowNull: false
-        }
-    });
+        },
+    }, {timestamps: false,});
     return Plant;
-};  
+};
