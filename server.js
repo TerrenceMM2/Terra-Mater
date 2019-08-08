@@ -30,7 +30,7 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 
 // Define Routes
-require('./routes/auth.js')(app, passport);
+require('./routes/auth-routes.js')(app, passport);
 require("./routes/html-routes.js")(app);
 require("./routes/api-user-routes.js")(app);
 require("./routes/api-plant-routes.js")(app);
