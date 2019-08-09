@@ -4,11 +4,20 @@ module.exports = function(app) {
 
     // @READ route gets all plant data
     app.get("/api/plant", function(req, res) {
-
         db.Plants.findAll({}).then(function(results) {
             res.json(results);
         });
+    });
 
+    // @READ route gets Plant Profile by ID
+    app.get("/api/plant/:id", function(req, res) {
+        db.Plants.findOne({
+            where: {
+                plantId: req.params.id
+            }
+        }).then(function(results) {
+            res.json(results);
+        });
     });
 
 
