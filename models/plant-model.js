@@ -49,7 +49,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         img: {
             type: DataTypes.BLOB,
-            allowNull: false
+            allowNull: false,
+            get() {
+                return this.getDataValue('img').toString('utf8');
+            },
         },
         sunlight: {
             type: DataTypes.TEXT,
