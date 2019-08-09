@@ -11,11 +11,12 @@ module.exports = function(app) {
         
     });
 
-    // @READ route gets plant name and short desc
+    // @READ route gets plant name, short desc, and img
+    // for displaying all plants to select from
     app.get("/api/plant-short", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc"]
+            attributes: ["commonName", "shortDesc", "img"]
         }).then(function(results) {
             res.json(results);
         });
