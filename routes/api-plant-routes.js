@@ -4,13 +4,27 @@ module.exports = function(app) {
 
     // @READ route gets all plant data
     app.get("/api/plant", function(req, res) {
+        
         db.Plants.findAll({}).then(function(results) {
             res.json(results);
         });
+        
+    });
+
+    // @READ route gets plant name and short desc
+    app.get("/api/plant-short", function(req, res) {
+        
+        db.Plants.findAll({
+            attributes: ["commonName", "shortDesc"]
+        }).then(function(results) {
+            res.json(results);
+        });
+
     });
 
     // @READ route gets Plant Profile by ID
     app.get("/api/plant/:id", function(req, res) {
+        
         db.Plants.findOne({
             where: {
                 plantId: req.params.id
@@ -18,6 +32,7 @@ module.exports = function(app) {
         }).then(function(results) {
             res.json(results);
         });
+
     });
 
 
