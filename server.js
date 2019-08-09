@@ -4,16 +4,18 @@ var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-var passport = require('passport');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+var passport = require("passport");
+var session = require("express-session");
+var bodyParser = require("body-parser");
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //For passport
-app.use(session({ secret: 'PeteLovesWorms', resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: "PeteLovesWorms", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -30,16 +32,16 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 
 // Define Routes
-require('./routes/auth-routes.js')(app, passport);
+require("./routes/auth-routes.js")(app, passport);
 require("./routes/html-routes.js")(app);
 require("./routes/api-user-routes.js")(app);
 require("./routes/api-plant-routes.js")(app);
 
 //Load passport strategies
-require('./config/passport.js')(passport, db.user);
+require("./config/passport.js")(passport, db.user);
 
 // Views
-app.set('views', './views');
+app.set("views", "./views");
 
 var syncOptions = { force: false };
 
