@@ -3,14 +3,7 @@ $(document).ready(function() {
    // Send Registration data to Database
    $('#register').on('submit', function(event) {
       event.preventDefault();
-
-      var password = $('#userPassword').val().trim();
-      var password2 = $('#password2').val().trim();
       
-      // Check if passwords Match
-      if (password !== password2) {
-         alert('Passwords do not match, please try again.');
-      } else {
          // Write Data to Object
          var data = {
             firstName: $('#firstName')
@@ -23,6 +16,9 @@ $(document).ready(function() {
                .val()
                .trim(),
             password: $('#userPassword')
+               .val()
+               .trim(),
+            password2: $('#password2')
                .val()
                .trim()
          };
@@ -37,7 +33,6 @@ $(document).ready(function() {
          // .then(function() {
          //    location.reload();
          // });
-      }
    }); // End of Registration
 
 });
