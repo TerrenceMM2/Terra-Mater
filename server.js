@@ -8,7 +8,6 @@ var passport = require("passport");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 
-const flash = require("connect-flash");
 const expressValidator = require('express-validator');
 
 //For BodyParser
@@ -26,13 +25,6 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-
-// Express Messages Middleware
-app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
 
 // Setup Express Validator Middleware
 app.use(expressValidator({
