@@ -1,8 +1,11 @@
-module.exports = function (app) {
+module.exports = function(app) {
+  app.get("/", function(req, res) {
+    res.render("index");
+  });
 
-    app.get("/", function (req, res) {
-        res.render("index");
-    });
+  app.get("/register", function(req, res) {
+    res.render("register");
+  });
 
     app.get("/plant-profile", function (req, res) {
         res.render("plant-profile");
