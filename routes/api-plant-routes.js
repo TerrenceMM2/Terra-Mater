@@ -1,15 +1,8 @@
 var db = require("../models");
+var Sequelize = require("sequelize");
+var Op = Sequelize.Op;
 
 module.exports = function(app) {
-
-    // @READ route gets all plant data
-    app.get("/api/plant", function(req, res) {
-        
-        db.Plants.findAll({}).then(function(results) {
-            res.json(results);
-        });
-        
-    });
 
     // @READ route gets plant name, short desc, and img
     // for displaying all plants to select from
@@ -36,8 +29,32 @@ module.exports = function(app) {
 
     });
 
+    // @READ route gets all plant data
+    app.get("/api/plants", function(req, res) {
+        db.Plants.findAll()
+        .then(function(result) {
+            res.json(result);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+    });
 
-};  
-
-// for pulling images out of BLOB datatype...
-// https://stackoverflow.com/questions/9042327/node-js-reading-blob-from-mysql
+    // @READ route gets plant by search term
+    app.get("/api/plants/search", function(req, res) {
+        db.Plants.findAll({
+        where: {
+            commonName: {
+            // $like - does not work
+            [Op.substring]: req.body.plantSearch
+            }
+        }
+        })
+        .then(function(result) {
+            res.json(result);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+    });
+};
