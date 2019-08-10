@@ -59,5 +59,5 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
     }, {timestamps: false});
-    return Plants ;
+    return Plants;
 };
