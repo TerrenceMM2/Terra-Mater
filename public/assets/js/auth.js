@@ -2,6 +2,8 @@ $(document).ready(function() {
 
    // Send Registration data to Database
    $('#register').on('submit', function(event) {
+$('.error-msg').text('Loading...')
+
       event.preventDefault();
       
          // Write Data to Object
@@ -29,10 +31,17 @@ $(document).ready(function() {
             method: 'post',
             url: '/register',
             data: data
-         });
-         // .then(function() {
-         //    location.reload();
-         // });
+         })
+         .then(function(res) {
+            if (res.success){
+               window.location.href= "/user-profile"
+            }
+         }).catch(function(err){
+            console.log(err)
+
+
+            $('.error-msg').text(err.responseJSON.msg)
+         })
    }); // End of Registration
 
 });
