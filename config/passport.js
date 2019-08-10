@@ -1,5 +1,4 @@
 var bcrypt = require('bcryptjs');
-console.log('you made it to passport.js'); //! added for testing
 
 module.exports = function(passport, user) {
    var User = user;
