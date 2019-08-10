@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 //! bring in user model?
-let User = require("../models/user-model")
+let db = require("../models")
 const bcrypt = require("bcryptjs");
 
 module.exports = function(app, passport) {
@@ -45,14 +45,15 @@ module.exports = function(app, passport) {
         errors: errors
       });
     } else {
-      let newUser = new User({
+      let newUser = new db.Users({
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: password
       });
+      console.log(newUser);
 
-      bcrypt.getSalt(10, function(err, salt) {
+      bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
           if (err) {
             console.log(err);
