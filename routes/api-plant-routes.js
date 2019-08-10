@@ -6,20 +6,18 @@ module.exports = function (app) {
         res.json("The plant API works!");
     });
 
-    app.get("api/plant/care/:id", function(req,res){
-        if (req.params.db) {
-            db.findOne({
-              where: {
-                routeName: req.params.text
-              }
-            }).then(function(result) {
-              return res.json(result);
-            });
-          } else {
-            db.findAll().then(function(result) {
-              return res.json(result);
-            });
-          }
-    })
+    //Update plant care
+    app.put("/api/plant/:id", function(req, res) {
+        db.Plant.update({
+            text: req.body.text,
+            complete: req.body.complete
+          }, {
+            where: {
+              id: req.body.id
+            }
+          }).then(function(dbPlant) {
+            res.json(dbPlant);
+          });
+        });
 
 };  
