@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Plant = sequelize.define('Plants', {
+    var Plants = sequelize.define('Plants', {
         plantId: {
             type: DataTypes.INTEGER,
             primaryKey: true
@@ -59,5 +59,5 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
     }, {timestamps: false});
-    return Plant;
+    return Plants ;
 };
