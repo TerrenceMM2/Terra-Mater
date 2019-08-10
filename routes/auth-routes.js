@@ -14,10 +14,7 @@ module.exports = function(app, passport) {
       res.render('login');
    });
 
-   app.post('/login', passport.authenticate('local-signin'), function(
-      req,
-      res
-   ) {
+   app.post('/login', passport.authenticate('local-signin'), function(req, res) {
       res.redirect('/user-profile');
    });
 
@@ -39,16 +36,15 @@ module.exports = function(app, passport) {
       req.checkBody('email', 'Email is required').notEmpty();
       req.checkBody('email', 'Email is not valid').isEmail();
       req.checkBody('password', 'Password is required').notEmpty();
-      req.checkBody('password2', 'Passwords do not match').equals(
-         req.body.password
-      );
+      req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-      let errors = req.validationErrors();
+      let formErrors = req.validationErrors();
 
-      if (errors) {
-         res.render('register', {
-            errors: errors
-         });
+      if (formErrors) {
+         res.status(400).json({
+           formErrors,
+           type: "formError"
+        });
       } else {
          let newUser = new db.Users({
             firstName: firstName,
@@ -71,12 +67,12 @@ module.exports = function(app, passport) {
                   });
                 })
                 .catch(error => {
-                  console.log('error in bcrypt');
                   console.log(error);
                   res.status(500).json({
-                    error: error,
+                    error,
                     success: false,
-                    msg: "Account could not be created."
+                    type: "dbError",
+                    msg: "Account could not be created. Please try again"
                   })
                 });
             });
