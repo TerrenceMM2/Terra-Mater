@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-//! bring in user model?
 let db = require('../models');
 const bcrypt = require('bcryptjs');
 
@@ -14,6 +13,7 @@ module.exports = function(app, passport) {
       res.render('login');
    });
 
+  //  Login proccess
    app.post('/login', passport.authenticate('local-signin'), function(req, res) {
       res.redirect('/user-profile');
    });
@@ -79,13 +79,6 @@ module.exports = function(app, passport) {
          });
       }
    });
-   // app.post(
-   //   "/register",
-   //   passport.authenticate("local-signup", {
-   //     successRedirect: "/user-profile",
-   //     failureRedirect: "/"
-   //   })
-   // );
 
    // Logout
    app.get('/logout', function(req, res) {
@@ -94,6 +87,7 @@ module.exports = function(app, passport) {
       });
    });
 
+   
    //* FUNCTIONS
    function isLoggedIn(req, res, next) {
       if (req.isAuthenticated()) {
