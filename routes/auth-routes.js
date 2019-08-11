@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-let db = require('../models');
-const bcrypt = require('bcryptjs');
+var db = require('../models');
+var bcrypt = require('bcryptjs');
 
 module.exports = function(app, passport) {
    // Dashboard
@@ -25,11 +25,11 @@ module.exports = function(app, passport) {
 
    // Register Process
    app.post('/register', function(req, res) {
-      const firstName = req.body.firstName;
-      const lastName = req.body.lastName;
-      const email = req.body.email;
-      const password = req.body.password;
-      const password2 = req.body.password2;
+      var firstName = req.body.firstName;
+      var lastName = req.body.lastName;
+      var email = req.body.email;
+      var password = req.body.password;
+      var password2 = req.body.password2;
 
       req.checkBody('firstName', 'First name is required').notEmpty();
       req.checkBody('lastName', 'Last name is required').notEmpty();
@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
       req.checkBody('password', 'Password is required').notEmpty();
       req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-      let formErrors = req.validationErrors();
+      var formErrors = req.validationErrors();
 
       if (formErrors) {
          res.status(400).json({
@@ -87,7 +87,7 @@ module.exports = function(app, passport) {
       });
    });
 
-   
+
    //* FUNCTIONS
    function isLoggedIn(req, res, next) {
       if (req.isAuthenticated()) {
