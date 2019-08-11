@@ -38,21 +38,26 @@ $('.error-msg').text('Loading...')
             }
          }).catch(function(err){
             console.log(err)
+
+            // Check if Form error
             if (err.responseJSON.type == "formError") {
                console.log('Form Error');
-               $('.error-msg').text(err.responseJSON.errors[0].msg);
+               $('.error-msg').text(err.responseJSON.formErrors[0].msg);
             }
 
+            // Check if DB error
             if (err.responseJSON.type == "dbError") {
                console.log('Database Error');
+
+               // Check for duplicate email found
                if (err.responseJSON.error.original.code === 'ER_DUP_ENTRY') {
-                  // duplicate email found
                   $('.error-msg').text('Email already exists. Please Login instead');
                } else {
+                  // Generic error
                   $('.error-msg').text(err.responseJSON.msg);
                }
             }
          })
-   }); // End of Registration
+   }); // End of Registration function
 
 });
