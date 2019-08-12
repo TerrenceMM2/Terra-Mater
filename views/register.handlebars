@@ -1,2 +1,24 @@
 <h1>Terra Mater</h1>
 <h2>Register Page</h2>
+
+<form id="register" name="register" method="post" action="/register">
+
+   <p>
+      <input placeholder="First Name"  name="firstName" type="text" id="firstName" />
+   </p>
+   <p>
+      <input placeholder="Last Name"  name="lastName" type="text" id="lastName" />
+   </p>
+   <p>
+      <input placeholder="Your Email" name="email" type="text" id="email" />
+   </p>
+   <p>
+      <input placeholder="Your Password" name="userPassword" type="password" id="userPassword" />
+   </p>
+   <p>
+      <input placeholder="Confirm Password" type="password" id="password2" />
+   </p>
+
+   <input type="submit" value="Register" />
+</form>
+<div class="error-msg"></div>
