@@ -79,7 +79,9 @@ module.exports = function(app) {
         }
         })
         .then(function(result) {
-            res.json(result);
+            // res.json(result);
+
+            res.status(200).render("search", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);

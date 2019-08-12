@@ -1,2 +1,16 @@
 <h1>Terra Mater</h1>
 <h2>Search Page</h2>
+{{!-- insert search bar functionality here --}}
+{{!-- insert sort functionality asc --}}
+{{!-- insert sort functionality desc --}}
+
+{{#each Plants}}
+<ul>
+    <li><img src={{img}} alt="plant image" height="200" width="200"></li>
+    <li>Name: {{commonName}}</li>
+    <li>{{shortDesc}}</li>
+</ul>
+<hr>
+{{/each}}
+
+{{!-- insert safety disclaimer --}}
