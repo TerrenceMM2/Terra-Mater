@@ -15,7 +15,7 @@ module.exports = function(app) {
     });
   })
 
-  //get specific user
+  //sign-in user
   app.get("/api/user/:id", function(req, res) {
     db.Users.findOne({
       where: {
@@ -30,18 +30,20 @@ module.exports = function(app) {
     });
   })
 
-  //create new user
-  // app.post("/api/user/:id", function(req,res){
-  //   db.User.create({
-  //     text: req.body.text,
-    
-  //   })
-  // })
-
-
-  //sign-in user
-
-
   //edit user details
-  
+  app.put("/api/user/:id", function(req, res){
+    db.Users.update({
+      text: req.body.text
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(result) {
+      res.json(result);
+    })
+    .catch(function(err) {
+        res.json(err);
+    });
+  });
 };
