@@ -5,6 +5,23 @@ module.exports = function(app) {
     res.json("The user API works!");
   });
 
+  //create new user
+  app.post("/api/user", function(req,res) {
+    db.Users.create({
+      email: req.body.email,
+      userName: req.body.userName,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
+    })
+    .then(function(result){
+      res.json(result)
+    })
+    .catch(function(err) {
+      res.json(err)
+    });
+  });
+
   //get all users
   app.get("/api/user/all", function(req, res){
     db.Users.findAll({})
