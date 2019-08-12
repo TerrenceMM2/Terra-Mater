@@ -11,8 +11,10 @@ module.exports = function(app) {
         
         db.Plants.findAll({
             attributes: ["commonName", "shortDesc", "img"]
-        }).then(function(results) {
-            res.json(results);
+        }).then(function(result) {
+            // res.json(result);
+
+            res.status(200).render("plantdir", {Plants: result});
         });
 
     });
