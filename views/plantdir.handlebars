@@ -11,6 +11,10 @@
 <h1>Terra Mater</h1>
 <h2>Search Page</h2>
 
+
+<button href="/api/plants/search">Search</button>
+<button href="/api/plant-short">Plant Directory</button>
+
 {{#each Plants}}
 <a href="/api/plant/{{plantId}}"><ul class="search-result">
     <li class="search-image" data-plantId={{plantId}}><img src={{img}} alt="plant image" height="200" width="200"></li>

@@ -9,18 +9,11 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    userName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4, 20]
-      }
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8, 20]
+        len: [8, 255]
       }
     },
     firstName: {
