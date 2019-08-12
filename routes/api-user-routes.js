@@ -33,7 +33,11 @@ module.exports = function(app) {
   //edit user details
   app.put("/api/user/:id", function(req, res){
     db.Users.update({
-      text: req.body.text
+      email: req.body.email,
+      userName: req.body.userName,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
     }, {
       where: {
         id: req.body.id
