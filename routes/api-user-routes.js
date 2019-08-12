@@ -6,7 +6,7 @@ module.exports = function(app) {
   });
 
   //create new user
-  app.post("/api/user", function(req,res) {
+  app.post("/api/user/add", function(req,res) {
     db.Users.create({
       email: req.body.email,
       userName: req.body.userName,
