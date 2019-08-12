@@ -1,3 +1,13 @@
-html {
-    background-color: lightgreen;
+body {
+    background-color: #CCC;
+}
+
+.plant-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+#plant-care {
+    display: none;
 }

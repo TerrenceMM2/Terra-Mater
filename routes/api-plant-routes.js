@@ -52,7 +52,8 @@ module.exports = function(app) {
                 plantId: req.params.id
             }
         }).then(function(results) {
-            res.json(results);
+            console.log(results);
+            res.render("plant-profile", results.dataValues);
         });
 
     });
