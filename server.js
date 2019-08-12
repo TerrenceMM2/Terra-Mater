@@ -16,7 +16,11 @@ app.use(bodyParser.json());
 
 //For passport
 app.use(
-  session({ secret: "PeteLovesWorms", resave: true, saveUninitialized: true })
+   session({
+      secret: process.env.SECRET_KEY,
+      resave: true,
+      saveUninitialized: true
+   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
