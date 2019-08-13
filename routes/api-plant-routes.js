@@ -27,7 +27,7 @@ module.exports = function(app) {
             attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "ASC"]]
         }).then(function(results) {
-            res.json(results);
+            res.status(200).render("plantdir", {Plants: results});
         });
 
     });
@@ -40,7 +40,7 @@ module.exports = function(app) {
             attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "DESC"]]
         }).then(function(results) {
-            res.json(results);
+            res.status(200).render("plantdir", {Plants: results});
         });
 
     });
@@ -103,7 +103,7 @@ module.exports = function(app) {
         order: [["commonName", "ASC"]]
         })
         .then(function(result) {
-            res.json(result);
+            res.status(200).render("search", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
@@ -123,7 +123,7 @@ module.exports = function(app) {
         order: [["commonName", "DESC"]]
         })
         .then(function(result) {
-            res.json(result);
+             res.status(200).render("search", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
