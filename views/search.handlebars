@@ -1,2 +1,40 @@
 <h1>Terra Mater</h1>
 <h2>Search Page</h2>
+
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="plantSearch">Search</label>
+                <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
+                    placeholder="Search">
+            </div>
+            <button id="plant-search" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {{#each Plants}}
+    <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
+    <a href="/plant/{{plantId}}">
+        <p class="plant-name">{{commonName}}</p>
+        </a> <p>{{shortDesc}}</p>
+            {{/each}}
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#plant-search").on("click", function (event) {
+            event.preventDefault();
+
+            var searchTerm = $("#plantSearch").val().trim();
+
+            window.location.href = "/plants/search?" + searchTerm;
+
+            console.log(Plants);
+             
+        })
+    })
+</script>

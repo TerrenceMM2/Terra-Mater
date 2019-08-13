@@ -45,7 +45,7 @@ module.exports = function(app) {
 
 
     // @READ route gets Plant Profile by ID
-    app.get("/api/plant/:id", function(req, res) {
+    app.get("/plant/:id", function(req, res) {
         
         db.Plants.findOne({
             where: {
@@ -70,17 +70,18 @@ module.exports = function(app) {
     });
 
     // @READ route gets plant by search term
-    app.get("/api/plants/search", function(req, res) {
+    app.get("/plants/search?:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
             // $like - does not work
-            [Op.substring]: req.body.plantSearch
+            [Op.substring]: req.params.term
             }
         }
         })
         .then(function(result) {
-            res.json(result);
+            console.log(result)
+            res.render("search", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
