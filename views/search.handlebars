@@ -16,11 +16,11 @@
 
 <div class="row">
     {{#each Plants}}
-    <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
-    <a href="/plant/{{plantId}}">
+        <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
+        <a href="/plant/{{plantId}}">
         <p class="plant-name">{{commonName}}</p>
         </a> <p>{{shortDesc}}</p>
-            {{/each}}
+    {{/each}}
 </div>
 
 <script>
@@ -35,6 +35,19 @@
 
             console.log(Plants);
              
-        })
-    })
+        });
+
+        $(".sort-asc").on("click", function() {
+            window.location.href = "/api/plants/ascend";
+        });
+
+        $(".sort-desc").on("click", function() {
+            window.location.href = "/api/plants/descend";
+        });
+
+        $(".plant-dir").on("click", function() {
+            window.location.href = "/api/plant-short";
+        });
+
+    });
 </script>

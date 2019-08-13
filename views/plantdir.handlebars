@@ -1,0 +1,35 @@
+<p>Terra Mater Logo</p>
+<button>Sign Out</button>
+
+
+<p>Search Bar</p>
+
+<button href="/api/plants/search">Search</button>
+<button class="plant-dir" href="/api/plant-short">Plant Directory</button>
+<button class="sort-asc" href="/api/plant-short/asc">Sort Ascending</button>
+<button class="sort-desc" href="/api/plant-short/desc">Sort Descending</button>
+
+{{#each Plants}}
+<a href="/api/plant/{{plantId}}"><ul class="search-result">
+    <li class="search-image" data-plantId={{plantId}}><img src={{img}} alt="plant image" height="200px" width="200px"></li>
+    <a href=""><li class="search-name">Name: {{commonName}}</li></a>
+    <li class="search-desc">{{shortDesc}}</li>
+</ul></a>
+{{/each}}
+
+
+<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>
+
+<script type="text/javascript">
+    $(".sort-asc").on("click", function() {
+        window.location.href = "/api/plant-short/asc";
+    });
+
+    $(".sort-desc").on("click", function() {
+        window.location.href = "/api/plant-short/desc";
+    });
+
+    $(".plant-dir").on("click", function() {
+        window.location.href = "/api/plant-short";
+    });
+</script>
