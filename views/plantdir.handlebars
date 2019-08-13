@@ -32,6 +32,14 @@
         </div>
     </div>
 
+    {{!-- sort row --}}
+    <div class="row mt-5">
+        <div class="col-lg-12 text-center">
+            <button class="btn btn-light mr-4 sort-asc">Sort Ascending</button>
+            <button class="btn btn-light ml-4 sort-desc">Sort Descending</button>
+        </div>
+    </div>
+
     {{!-- results row --}}
     {{#each Plants}}
         <div class="row mt-5 bg-light p-4 rounded">
@@ -75,15 +83,11 @@
         })
 
         $(".sort-asc").on("click", function() {
-            window.location.href = "/api/plants/ascend";
+            window.location.href = "/api/plant-short/asc";
         });
 
         $(".sort-desc").on("click", function() {
-            window.location.href = "/api/plants/descend";
-        });
-
-        $(".plant-dir").on("click", function() {
-            window.location.href = "/api/plant-short";
+            window.location.href = "/api/plant-short/desc";
         });
 
     });

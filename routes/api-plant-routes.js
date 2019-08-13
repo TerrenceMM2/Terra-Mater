@@ -24,7 +24,7 @@ module.exports = function(app) {
     app.get("/api/plant-short/asc", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"],
+            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "ASC"]]
         }).then(function(results) {
             res.status(200).render("plantdir", {Plants: results});
@@ -37,7 +37,7 @@ module.exports = function(app) {
     app.get("/api/plant-short/desc", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"],
+            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "DESC"]]
         }).then(function(results) {
             res.status(200).render("plantdir", {Plants: results});
