@@ -62,7 +62,7 @@
 
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
@@ -83,13 +83,15 @@
         })
 
         $(".sort-asc").on("click", function() {
-            var term = window.location.pathname;
-            window.location.href = "/api/ascend" + term;
+            var urlArray = window.location.href.split("/");
+            var searchTerm = urlArray[urlArray.length-1];
+            window.location.href = "/plants/search/sort-asc/" + searchTerm;
         });
 
         $(".sort-desc").on("click", function() {
-            var term = window.location.pathname;
-            window.location.href = "/api/descend" + term;
+            var urlArray = window.location.href.split("/");
+            var searchTerm = urlArray[urlArray.length-1];
+            window.location.href = "/plants/search/sort-desc/" + searchTerm;
         });
 
         $(".terra-mater-logo").on("click", function() {

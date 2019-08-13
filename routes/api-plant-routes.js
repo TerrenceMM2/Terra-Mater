@@ -4,6 +4,10 @@ var Op = Sequelize.Op;
 
 module.exports = function(app) {
 
+// =============================================
+// all plants directory including ==============
+// sorting buttons area ========================
+// =============================================
 
     // @READ route gets plant name, short desc, and img
     // for displaying all plants to select from
@@ -45,6 +49,9 @@ module.exports = function(app) {
 
     });
 
+// =============================================
+// get plant profile by id =====================
+// =============================================
 
     // @READ route gets Plant Profile by ID
     app.get("/plant/:id", function(req, res) {
@@ -60,16 +67,10 @@ module.exports = function(app) {
 
     });
 
-    // @READ route gets all plant data
-    app.get("/api/plants", function(req, res) {
-        db.Plants.findAll()
-        .then(function(result) {
-            res.json(result);
-        })
-        .catch(function(err) {
-            res.json(err);
-        });
-    });
+// =============================================
+// search via term including ===================
+// sorting buttons area ========================
+// =============================================
 
     // @READ route gets plant by search term
     app.get("/plants/search/:term", function(req, res) {
@@ -91,7 +92,7 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered ascending
-    app.get("/api/ascend/plants/search/:term", function(req, res) {
+    app.get("/plants/search/sort-asc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
@@ -111,7 +112,7 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered descending 
-    app.get("/api/descend/plants/search/:term", function(req, res) {
+    app.get("/plants/search/sort-desc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
