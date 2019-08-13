@@ -7,7 +7,7 @@ var PORT = process.env.PORT || 8080;
 var passport = require("passport");
 var session = require("express-session");
 var bodyParser = require("body-parser");
-require('dotenv').config({ path: '/config/.env' });
+require("dotenv").config({ path: "/config/.env" });
 
 var expressValidator = require("express-validator");
 
@@ -17,11 +17,11 @@ app.use(bodyParser.json());
 
 //For passport
 app.use(
-   session({
-      secret: "process.env.SECRET_KEY",
-      resave: true,
-      saveUninitialized: true
-   })
+  session({
+    secret: "process.env.SECRET_KEY",
+    resave: true,
+    saveUninitialized: true
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -64,7 +64,7 @@ require("./routes/api-user-routes.js")(app);
 require("./routes/api-plant-routes.js")(app);
 
 //Load passport strategies
-var db = require('./models');
+var db = require("./models");
 require("./config/passport.js")(passport, db.Users);
 
 // Views
