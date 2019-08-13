@@ -10,7 +10,7 @@ module.exports = function(app) {
     app.get("/api/plant-short", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"]
+            // attributes: ["commonName", "shortDesc", "img"]
         }).then(function(result) {
             // res.json(result);
 
