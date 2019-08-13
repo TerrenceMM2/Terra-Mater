@@ -33,3 +33,92 @@
         window.location.href = "/api/plant-short";
     });
 </script>
+
+<div class="container">
+    {{!-- logo and sign in / out--}}
+    <div class="row">
+        <div class="col-lg-6 text-left">
+            <img class="terra-mater-logo" src="./assets/images/tm-logo.png" alt="Terra Mater Logo">
+        </div>
+        <div class="col-lg-6 text-right">
+            <button type="button" class="btn btn-info my-5 mr-3">Sign In</button>
+            <button type="button" class="btn btn-secondary my-5">Sign Out</button>
+        </div>
+    </div>
+
+    {{!-- search row --}}
+    <div class="row">
+        <div class="offset-lg-3 col-lg-6">
+            <form>
+                <div class="form-group">
+                    {{!-- <label for="plantSearch">Search</label> --}}
+                    <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
+                        placeholder="Look for a plant...">
+                    {{!-- buttons row for form --}}
+                    <div class="row my-3">
+                        <div class="col-lg-6 text-left">
+                            <button id="plant-search" type="submit" class="btn btn-info">Search</button>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <button id="all-pants-btn" type="submit" class="btn btn-warning">All Plants</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{!-- results row --}}
+    {{#each Plants}}
+        <div class="row mt-5 bkg-dark">
+            <div class="offset-lg-1 col-lg-8">
+                <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
+                <a href="/plant/{{plantId}}"><p class="plant-name">{{commonName}}</p></a> 
+                <p class="plant-short-desc">{{shortDesc}}</p>
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="row footer pt-5">
+        <div class="col-lg-12 text-center">
+            <p class="disclaimer">All information found on this website is meant for educational purposes. You assume full risk by using our site and agree to use this sample data at your own risk.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#plant-search").on("click", function (event) {
+            event.preventDefault();
+            
+            var searchTerm = $("#plantSearch").val().trim();
+            
+            if (searchTerm) {
+                window.location.href = "/plants/search?" + searchTerm;
+                // console.log(Plants);
+            } else {
+                alert("Please enter a search term");
+            }
+        });
+
+        $("#all-pants-btn").on("click", function(event) {
+            event.preventDefault();
+            window.location.href = "/api/plant-short";
+        })
+
+        $(".sort-asc").on("click", function() {
+            window.location.href = "/api/plants/ascend";
+        });
+
+        $(".sort-desc").on("click", function() {
+            window.location.href = "/api/plants/descend";
+        });
+
+        $(".plant-dir").on("click", function() {
+            window.location.href = "/api/plant-short";
+        });
+
+    });
+</script>

@@ -72,7 +72,7 @@ module.exports = function(app) {
     });
 
     // @READ route gets plant by search term
-    app.get("/plants/search?:term", function(req, res) {
+    app.get("/plants/search/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
