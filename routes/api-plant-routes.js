@@ -82,7 +82,7 @@ module.exports = function(app) {
         }
         })
         .then(function(result) {
-            res.status(200).render("search", {Plants: result});
+            res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
@@ -102,7 +102,7 @@ module.exports = function(app) {
         order: [["commonName", "ASC"]]
         })
         .then(function(result) {
-            res.status(200).render("search", {Plants: result});
+            res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
@@ -122,7 +122,7 @@ module.exports = function(app) {
         order: [["commonName", "DESC"]]
         })
         .then(function(result) {
-             res.status(200).render("search", {Plants: result});
+             res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
