@@ -24,7 +24,7 @@
                             <button id="plant-search" type="submit" class="btn btn-info">Search</button>
                         </div>
                         <div class="col-lg-6 text-right">
-                            <button id="all-pants-btn" type="submit" class="btn btn-warning">All Plants</button>
+                            <button id="all-plants-btn" type="submit" class="btn btn-warning">All Plants</button>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             }
         });
 
-        $("#all-pants-btn").on("click", function(event) {
+        $("#all-plants-btn").on("click", function(event) {
             event.preventDefault();
             window.location.href = "/api/plant-short";
         })
