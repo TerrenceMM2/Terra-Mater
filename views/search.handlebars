@@ -1,19 +1,13 @@
-{{!-- logo top left corner --}}
-{{!-- <img src="..." alt="Terra Mater Logo"> --}}
+<p>Terra Mater Logo</p>
+<button>Sign Out</button>
 
-{{!-- insert signout button in top right corner --}}
-{{!-- insert search bar in top middle --}}
-{{!-- insert search button for new query --}}
-{{!-- insert get all button for all search results --}}
-{{!-- insert sort functionality asc --}}
-{{!-- insert sort functionality desc --}}
 
-<h1>Terra Mater</h1>
-<h2>Search Page</h2>
-
+<p>Search Bar</p>
 
 <button href="/api/plants/search">Search</button>
 <button href="/api/plant-short">Plant Directory</button>
+<button href="/api/plants/ascend">Sort Ascending</button>
+<button href="/api/plants/descend">Sort Descending</button>
 
 {{#each Plants}}
 <a href="/api/plant/{{plantId}}"><ul class="search-result">
