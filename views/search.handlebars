@@ -35,7 +35,7 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
@@ -53,6 +53,10 @@
         $("#all-plants-btn").on("click", function(event) {
             event.preventDefault();
             window.location.href = "/api/plant-short";
-        })
+        });
+
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/search";
+        });
     });
 </script>

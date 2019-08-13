@@ -91,12 +91,12 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered ascending
-    app.get("/api/plants/ascend", function(req, res) {
+    app.get("/api/ascend/plants/search/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
             // $like - does not work
-            [Op.substring]: req.body.plantSearch
+            [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "ASC"]]
@@ -111,12 +111,12 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered descending 
-    app.get("/api/plants/descend", function(req, res) {
+    app.get("/api/descend/plants/search/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
             // $like - does not work
-            [Op.substring]: req.body.plantSearch
+            [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "DESC"]]

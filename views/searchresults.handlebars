@@ -42,7 +42,7 @@
 
     {{!-- results row --}}
     {{#each Plants}}
-        <div class="row mt-5 bg-light p-4 rounded">
+        <div class="row mt-5 bg-light py-4 rounded">
             <div class="offset-lg-1 col-lg-3">
                 <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
             </div>
@@ -83,11 +83,17 @@
         })
 
         $(".sort-asc").on("click", function() {
-            window.location.href = "/api/plants/ascend";
+            var term = window.location.pathname;
+            window.location.href = "/api/ascend" + term;
         });
 
         $(".sort-desc").on("click", function() {
-            window.location.href = "/api/plants/descend";
+            var term = window.location.pathname;
+            window.location.href = "/api/descend" + term;
+        });
+
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/search";
         });
 
     });
