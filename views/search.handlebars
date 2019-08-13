@@ -1,35 +1,53 @@
-<p>Terra Mater Logo</p>
-<button>Sign Out</button>
+<h1>Terra Mater</h1>
+<h2>Search Page</h2>
 
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="plantSearch">Search</label>
+                <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
+                    placeholder="Search">
+            </div>
+            <button id="plant-search" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
 
-<p>Search Bar</p>
+<div class="row">
+    {{#each Plants}}
+        <a href="/plant/{{plantId}}"><img class="plant-img" src={{img}}></a>
+        <a href="/plant/{{plantId}}">
+        <p class="plant-name">{{commonName}}</p>
+        </a> <p>{{shortDesc}}</p>
+    {{/each}}
+</div>
 
-<button href="/api/plants/search">Search</button>
-<button href="/api/plant-short">Plant Directory</button>
-<button href="/api/plants/ascend">Sort Ascending</button>
-<button href="/api/plants/descend">Sort Descending</button>
+<script>
+    $(document).ready(function () {
 
-{{#each Plants}}
-<a href="/api/plant/{{plantId}}"><ul class="search-result">
-    <li class="search-image" data-plantId={{plantId}}><img src={{img}} alt="plant image" height="200px" width="200px"></li>
-    <a href=""><li class="search-name">Name: {{commonName}}</li></a>
-    <li class="search-desc">{{shortDesc}}</li>
-</ul></a>
-{{/each}}
+        $("#plant-search").on("click", function (event) {
+            event.preventDefault();
 
+            var searchTerm = $("#plantSearch").val().trim();
 
-<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>
+            window.location.href = "/plants/search?" + searchTerm;
 
-<script type="text/javascript">
-    $(".sort-asc").on("click", function() {
-        window.location.href = "/api/plants/ascend";
-    });
+            console.log(Plants);
+             
+        });
 
-    $(".sort-desc").on("click", function() {
-        window.location.href = "/api/plants/descend";
-    });
+        $(".sort-asc").on("click", function() {
+            window.location.href = "/api/plants/ascend";
+        });
 
-    $(".plant-dir").on("click", function() {
-        window.location.href = "/api/plant-short";
+        $(".sort-desc").on("click", function() {
+            window.location.href = "/api/plants/descend";
+        });
+
+        $(".plant-dir").on("click", function() {
+            window.location.href = "/api/plant-short";
+        });
+
     });
 </script>
