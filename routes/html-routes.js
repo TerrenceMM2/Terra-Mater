@@ -1,6 +1,13 @@
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.render("index");
+    var userData = req.user
+    
+    if (!userData) {
+      console.log('User not logged in');
+      res.render("index");
+    } else {
+      res.render("index", userData);
+    }
   });
 
   app.get("/register", function(req, res) {
