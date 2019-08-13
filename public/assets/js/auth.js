@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  // Send Registration data to Database
+
+  //* Send Registration data to Database
   $("#register").on("submit", function(event) {
     $(".error-msg").text("Loading...");
 
@@ -59,4 +60,39 @@ $(document).ready(function() {
         }
       });
   }); // End of Registration function
+
+  //* Send Registration data to Database
+  $("#login").on("submit", function(event) {
+  $(".error-msg").text("Loading...");
+
+  event.preventDefault();
+
+  // Write Data to Object
+  var data = {
+    email: $("#email")
+      .val()
+      .trim(),
+    password: $("#userPassword")
+      .val()
+      .trim(),
+  };
+  console.log(data);
+
+  // Pass Data object to DB
+  $.ajax({
+    method: "post",
+    url: "/login",
+    data: data
+  })
+    .then(function(res) {
+      console.log('then: ',res);
+      if (res.success) {
+        window.location.href = "/user-profile";
+      }
+    })
+    .catch(function(err) {
+      console.log('error: ',err);
+    });
+  }); // End of Login function
+
 });
