@@ -92,6 +92,13 @@ $(document).ready(function() {
     })
     .catch(function(err) {
       console.log('error: ',err);
+
+      if (err.responseText === 'Unauthorized') {
+         console.log('Login Error');
+         $('.error-msg').text(
+            'Your email or password are incorrect. Please try again'
+         );
+      }
     });
   }); // End of Login function
 
