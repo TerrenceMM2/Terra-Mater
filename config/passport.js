@@ -21,6 +21,7 @@ module.exports = function(passport, user) {
    });
 
    //* LOCAL SIGN UP
+   //! Not using at the moment
    passport.use(
       'local-signup',
       new LocalStrategy(
