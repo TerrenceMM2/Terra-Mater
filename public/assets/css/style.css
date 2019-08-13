@@ -1,7 +1,3 @@
-body {
-    background-color: #CCC;
-}
-
 .plant-img {
     width: 200px;
     height: 200px;
@@ -10,4 +6,14 @@ body {
 
 #plant-care {
     display: none;
+}
+
+.terra-mater-logo {
+    width: 200px;
+    height: 200px;
+}
+
+.disclaimer {
+    font-style: italic;
+    font-size: smaller;
 }
