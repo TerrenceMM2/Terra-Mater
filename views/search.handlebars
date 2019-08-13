@@ -19,3 +19,17 @@
 
 
 <p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>
+
+<script type="text/javascript">
+    $(".sort-asc").on("click", function() {
+        window.location.href = "/api/plants/ascend";
+    });
+
+    $(".sort-desc").on("click", function() {
+        window.location.href = "/api/plants/descend";
+    });
+
+    $(".plant-dir").on("click", function() {
+        window.location.href = "/api/plant-short";
+    });
+</script>
