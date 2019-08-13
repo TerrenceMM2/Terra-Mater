@@ -62,7 +62,7 @@
 
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
@@ -70,7 +70,7 @@
             var searchTerm = $("#plantSearch").val().trim();
             
             if (searchTerm) {
-                window.location.href = "/plants/search/" + searchTerm;
+                window.location.href = "/plants/search?" + searchTerm;
                 // console.log(Plants);
             } else {
                 alert("Please enter a search term");

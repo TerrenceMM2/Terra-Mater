@@ -43,8 +43,7 @@
             var searchTerm = $("#plantSearch").val().trim();
             
             if (searchTerm) {
-                window.location.href = "/plants/search/" + searchTerm;
-                // console.log(Plants);
+                window.location.href = "/plants/search?" + searchTerm;
             } else {
                 alert("Please enter a search term");
             }
