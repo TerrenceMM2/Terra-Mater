@@ -73,7 +73,7 @@ module.exports = function(app) {
 // =============================================
 
     // @READ route gets plant by search term
-    app.get("/plants/search?:term", function(req, res) {
+    app.get("/plants/search/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
@@ -92,7 +92,7 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered ascending
-    app.get("/plants/search/sort-asc?:term", function(req, res) {
+    app.get("/plants/search/sort-asc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
@@ -112,7 +112,7 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered descending 
-    app.get("/plants/search/sort-desc?:term", function(req, res) {
+    app.get("/plants/search/sort-desc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
