@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   //* Send Registration data to Database
   $("#register").on("submit", function(event) {
     $(".error-msg").text("Loading...");
@@ -63,43 +62,42 @@ $(document).ready(function() {
 
   //* Send Registration data to Database
   $("#login").on("submit", function(event) {
-  $(".error-msg").text("Loading...");
+    $(".error-msg").text("Loading...");
 
-  event.preventDefault();
+    event.preventDefault();
 
-  // Write Data to Object
-  var data = {
-    email: $("#email")
-      .val()
-      .trim(),
-    password: $("#userPassword")
-      .val()
-      .trim(),
-  };
-  console.log(data);
+    // Write Data to Object
+    var data = {
+      email: $("#email")
+        .val()
+        .trim(),
+      password: $("#userPassword")
+        .val()
+        .trim()
+    };
+    console.log(data);
 
-  // Pass Data object to DB
-  $.ajax({
-    method: "post",
-    url: "/login",
-    data: data
-  })
-    .then(function(res) {
-      console.log('then: ',res);
-      if (res.success) {
-        window.location.href = "/user-profile";
-      }
+    // Pass Data object to DB
+    $.ajax({
+      method: "post",
+      url: "/login",
+      data: data
     })
-    .catch(function(err) {
-      console.log('error: ',err);
+      .then(function(res) {
+        console.log("then: ", res);
+        if (res.success) {
+          window.location.href = "/user-profile";
+        }
+      })
+      .catch(function(err) {
+        console.log("error: ", err);
 
-      if (err.responseText === 'Unauthorized') {
-         console.log('Login Error');
-         $('.error-msg').text(
-            'Your email or password are incorrect. Please try again'
-         );
-      }
-    });
+        if (err.responseText === "Unauthorized") {
+          console.log("Login Error");
+          $(".error-msg").text(
+            "Your email or password are incorrect. Please try again"
+          );
+        }
+      });
   }); // End of Login function
-
 });
