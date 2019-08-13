@@ -1,2 +1,36 @@
-<h1>Terra Mater</h1>
-<h2>Plant Profile Page</h2>
+<div class="container">
+    <img class="plant-img" src={{img}}>
+    <h1 class="plant-name">{{commonName}}</h1>
+    <p>{{longDesc}}</p>
+    <div class="text-right plant-toggle">
+        <span id="profile">Profile   </span>|<span id="care">  Care Instructions</span>
+    </div>
+    <div class="container" id="plant-profile">
+        <div class="row">
+            <div class="col-6">
+                <p>Scientific Name</p>
+                <p>Poisonous to Humans?</p>
+                <p>Poisonous to Animals?</p>
+            </div>
+            <div class="col-6">
+                <p>{{scienName}}</p>
+                <p>{{poisHuman}}</p>
+                <p>{{poisAnimal}}</p>
+            </div>
+        </div>
+    </div>
+        <div class="container" id="plant-care">
+        <div class="row">
+            <div class="col-6">
+                <p>General Care Instructions</p>
+                <p>Food</p>
+                <p>Min. Temp</p>
+            </div>
+            <div class="col-6">
+                <p>{{genCare}}</p>
+                <p>{{food}}</p>
+                <p>{{minTemp}}</p>
+            </div>
+        </div>
+    </div>
+</div>
