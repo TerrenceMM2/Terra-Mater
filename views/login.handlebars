@@ -1,7 +1,27 @@
+{{!-- logo top left corner --}}
+{{!-- <img src="..." alt="Terra Mater Logo"> --}}
+
+{{!-- insert signout button in top right corner --}}
+{{!-- insert search bar in top middle --}}
+<form class="form-inline my-2 my-lg-0">
+   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+{{!-- insert search button for new query --}}
+{{!-- insert get all button for all search results --}}
+{{!-- insert sort functionality asc --}}
+{{!-- insert sort functionality desc --}}
+
+{{!-- Heading for page --}}
 <h1>Terra Mater</h1>
 <h2>Login Page</h2>
 
-<form id="login" name="login" method="post" action="/login">
+{{!-- Plant Buttons --}}
+<button href="/api/plants/search">Search</button>
+<button href="/api/plant-short">Plant Directory</button>
+
+{{!-- Form to login --}}
+<form id="login" name="login" method="get" action="/login">
 
    <p>
       <input placeholder="Email" name="email" type="text" id="email" />
@@ -12,3 +32,6 @@
 
    <input type="submit" value="Sign In" />
 </form>
+
+{{!-- Disclaimer --}}
+<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>

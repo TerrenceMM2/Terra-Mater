@@ -1,6 +1,22 @@
+{{!-- logo top left corner --}}
+{{!-- <img src="..." alt="Terra Mater Logo"> --}}
+
+{{!-- insert signout button in top right corner --}}
+{{!-- insert search bar in top middle --}}
+<form class="form-inline my-2 my-lg-0">
+   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+{{!-- insert search button for new query --}}
+{{!-- insert get all button for all search results --}}
+{{!-- insert sort functionality asc --}}
+{{!-- insert sort functionality desc --}}
+
+{{!-- Heading for page --}}
 <h1>Terra Mater</h1>
 <h2>Register Page</h2>
 
+{{!-- Account Creation form --}}
 <form id="register" name="register" method="post" action="/register">
 
    <p>
@@ -22,3 +38,6 @@
    <input type="submit" value="Register" />
 </form>
 <div class="error-msg"></div>
+
+{{!-- Disclaimer --}}
+<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>
