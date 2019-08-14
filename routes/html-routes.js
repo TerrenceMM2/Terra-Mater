@@ -2,16 +2,13 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     var userData = req.user;
 
+    //Check to see if logged in. If true pass logged in users Data
     if (!userData) {
       console.log("User not logged in");
-      res.render("index");
+      res.render('search');
     } else {
-      res.render("index", userData);
+      res.render('search', userData);
     }
-  });
-
-  app.get("/register", function(req, res) {
-    res.render("register");
   });
 
   app.get("/plant-profile", function(req, res) {
