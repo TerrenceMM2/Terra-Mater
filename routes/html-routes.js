@@ -2,6 +2,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     var userData = req.user;
 
+    //Check to see if logged in. If true pass logged in users Data
     if (!userData) {
       console.log("User not logged in");
       res.locals.metaTags = {
