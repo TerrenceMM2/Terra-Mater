@@ -15,7 +15,4 @@ module.exports = function(app) {
     res.render("plant-profile");
   });
 
-  app.get("/search", function(req, res) {
-    res.render("search");
-  });
 };
