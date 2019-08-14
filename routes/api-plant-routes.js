@@ -49,6 +49,24 @@ module.exports = function(app) {
 
     });
 
+
+// =============================================
+// favorites button ============================
+// =============================================
+
+    // @POST route to add user favorite to table
+    app.post("/api/add-favorite", function(req, res) {
+        
+        db.Favorites.create({
+            plantId: req.body.data.plantId,
+            commonName: req.body.data.commonName,
+            Userid: req.body.data.Userid
+        }).then(function(){
+            res.status(200)
+        });
+    });
+
+
 // =============================================
 // get plant profile by id =====================
 // =============================================
@@ -56,15 +74,28 @@ module.exports = function(app) {
     // @READ route gets Plant Profile by ID
     app.get("/plant/:id", function(req, res) {
         
-        db.Plants.findOne({
-            where: {
-                plantId: req.params.id
-            }
-        }).then(function(results) {
-            console.log(results);
-            res.render("plant-profile", results.dataValues);
-        });
+        var userData = req.user;
 
+        if (!userData) {
+            db.Plants.findOne({
+                where: {
+                    plantId: req.params.id
+                }
+            }).then(function(results) {
+                res.render("plant-profile", results.dataValues);
+            });
+        } else if (userData) {
+            db.Plants.findOne({
+                where: {
+                    plantId: req.params.id
+                }
+            }).then(function(results) {
+                res.render("plant-profile-li", {
+                    userData,
+                    plantData: results.dataValues
+                });
+            });
+        }
     });
 
 // =============================================
