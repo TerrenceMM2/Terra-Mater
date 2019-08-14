@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 var db = require('../models');
 var bcrypt = require('bcryptjs');
 
 module.exports = function(app, passport) {
    // Dashboard
    app.get('/user-profile', isLoggedIn, function(req, res) {
-      // req.user is passed from passport once successful login
+      // req.user is passed from passport once user logs in
       userData = req.user
       res.render('user-profile', userData);
    });
@@ -35,6 +34,7 @@ module.exports = function(app, passport) {
       var password = req.body.password;
       var password2 = req.body.password2;
 
+      // Validate reg data and make sure they pass
       req.checkBody('firstName', 'First name is required').notEmpty();
       req.checkBody('lastName', 'Last name is required').notEmpty();
       req.checkBody('email', 'Email is required').notEmpty();
@@ -50,20 +50,23 @@ module.exports = function(app, passport) {
            type: "formError"
         });
       } else {
+         // if all checks pass, assign reg data to model object
          let newUser = new db.Users({
             firstName: firstName,
             lastName: lastName,
             email: email,
             password: password
          });
-        //!  console.log('newUser Object', newUser);
 
+         // encrypt psw
          bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(newUser.password, salt, function(err, hash) {
                if (err) {
                   console.log(err);
                }
                newUser.password = hash;
+
+               // Save reg data to Database
                newUser.save()
                 .then(() => {
                   res.status(200).json({
