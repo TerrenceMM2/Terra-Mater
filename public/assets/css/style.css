@@ -21,3 +21,8 @@
 /* .plant-img, .plant-name, .plant-short-desc {
     display: inline
 } */
+
+a {
+    color: #000000;
+    text-decoration: none;
+}

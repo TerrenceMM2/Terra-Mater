@@ -1,7 +1,72 @@
-<h1>Terra Mater</h1>
-<h2>User Profile Page</h2>
-<h3>Welcome {{firstName}} {{lastName}}</h3>
+{{!-- <p><a href="/logout">Logout</a></p> --}}
 
-<h2>This is a protected route.</h2>
+<div class="container">
+    {{!-- logo and sign in / out--}}
+    <div class="row">
+        <div class="col-lg-6 text-left">
+            <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+        </div>
+        <div class="col-lg-6 text-right">
+            <button type="button" class="btn btn-info my-5 mr-3"><a href="/login">Login</a></button>
+            <button type="button" class="btn btn-secondary my-5"><a href="/register">Register</a></button>
+            <button type="button" class="btn btn-secondary my-5"><a href="/logout">Logout</a></button>
+        </div>
+    </div>
+</div>
+    {{!-- welcome message --}}
+    <div class="row my-5">
+        <div class="col-lg-12 text-center">
+            <h3>Welcome, {{firstName}}.</h3>
+        </div>
+    </div>
+​
+    {{!-- search row --}}
+    <div class="row">
+        <div class="offset-lg-3 col-lg-6">
+            <form>
+                <div class="form-group">
+                    {{!-- <label for="plantSearch">Search</label> --}}
+                    <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
+                        placeholder="Look for a plant...">
+                    {{!-- buttons row for form --}}
+                    <div class="row my-3">
+                        <div class="col-lg-6 text-left">
+                            <button id="plant-search" type="submit" class="btn btn-info">Search</button>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <button id="all-plants-btn" type="submit" class="btn btn-warning">All Plants</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+​
+</div>
+​
+<script>
+    $(document).ready(function() {
+​
+        $("#plant-search").on("click", function (event) {
+            event.preventDefault();
+            
+            var searchTerm = $("#plantSearch").val().trim();
+            
+            if (searchTerm) {
+                window.location.href = "/plants/search/" + searchTerm;
+            } else {
+                alert("Please enter a search term");
+            }
+        });
+​
+        $("#all-plants-btn").on("click", function(event) {
+            event.preventDefault();
+            window.location.href = "/api/plant-short";
+        });
+​
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/search";
+        });
 
-<p><a href="/logout">Logout</a></p>
+    });
+</script>
