@@ -1,8 +1,6 @@
-var passport = require('passport');
-
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    var userData = req.user
+    var userData = req.user;
     //Check to see if logged in. If true pass logged in users Data
     res.locals.metaTags = {
       title: "Terra Mater"
@@ -18,9 +16,5 @@ module.exports = function(app) {
       title: "Terra Mater | Register"
     };
     res.render("register");
-  });
-
-  app.get("/plant-profile", function(req, res) {
-    res.render("plant-profile");
   });
 };

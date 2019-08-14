@@ -5,7 +5,7 @@
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
         </div>
         <div class="col-lg-6 text-right">
-            {{#if user}}
+            {{#if loggedIn}}
             <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
             <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
             {{else}}
@@ -16,9 +16,9 @@
 </div>
 
 <div class="container">
-    <img class="plant-img" src={{img}}>
-    <h1 class="plant-name">{{commonName}}</h1>
-    <p>{{longDesc}}</p>
+    <img class="plant-img" src={{data.img}}>
+    <h1 class="plant-name">{{data.commonName}}</h1>
+    <p>{{data.longDesc}}</p>
     <div class="text-right plant-toggle">
         <span id="profile">Profile   </span>|<span id="care" class="inactive">  Care Instructions</span>
     </div>
@@ -30,9 +30,9 @@
                 <p>Poisonous to Animals?</p>
             </div>
             <div class="col-6">
-                <p>{{scienName}}</p>
-                <p>{{poisHuman}}</p>
-                <p>{{poisAnimal}}</p>
+                <p>{{data.scienName}}</p>
+                <p>{{data.poisHuman}}</p>
+                <p>{{data.poisAnimal}}</p>
             </div>
         </div>
     </div>
@@ -44,9 +44,9 @@
                 <p>Min. Temp</p>
             </div>
             <div class="col-6">
-                <p>{{genCare}}</p>
-                <p>{{food}}</p>
-                <p>{{minTemp}}</p>
+                <p>{{data.genCare}}</p>
+                <p>{{data.food}}</p>
+                <p>{{data.minTemp}}</p>
             </div>
         </div>
     </div>
