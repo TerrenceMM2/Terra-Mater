@@ -4,13 +4,17 @@ var Op = Sequelize.Op;
 
 module.exports = function(app) {
 
+// =============================================
+// all plants directory including ==============
+// sorting buttons area ========================
+// =============================================
 
     // @READ route gets plant name, short desc, and img
     // for displaying all plants to select from
     app.get("/api/plant-short", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"]
+            // attributes: ["commonName", "shortDesc", "img"]
         }).then(function(result) {
             // res.json(result);
 
@@ -24,7 +28,7 @@ module.exports = function(app) {
     app.get("/api/plant-short/asc", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"],
+            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "ASC"]]
         }).then(function(results) {
             res.status(200).render("plantdir", {Plants: results});
@@ -37,7 +41,7 @@ module.exports = function(app) {
     app.get("/api/plant-short/desc", function(req, res) {
         
         db.Plants.findAll({
-            attributes: ["commonName", "shortDesc", "img"],
+            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "DESC"]]
         }).then(function(results) {
             res.status(200).render("plantdir", {Plants: results});
@@ -45,6 +49,9 @@ module.exports = function(app) {
 
     });
 
+// =============================================
+// get plant profile by id =====================
+// =============================================
 
     // @READ route gets Plant Profile by ID
     app.get("/plant/:id", function(req, res) {
@@ -60,19 +67,13 @@ module.exports = function(app) {
 
     });
 
-    // @READ route gets all plant data
-    app.get("/api/plants", function(req, res) {
-        db.Plants.findAll()
-        .then(function(result) {
-            res.json(result);
-        })
-        .catch(function(err) {
-            res.json(err);
-        });
-    });
+// =============================================
+// search via term including ===================
+// sorting buttons area ========================
+// =============================================
 
     // @READ route gets plant by search term
-    app.get("/plants/search?:term", function(req, res) {
+    app.get("/plants/search/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
@@ -82,7 +83,7 @@ module.exports = function(app) {
         }
         })
         .then(function(result) {
-            res.status(200).render("search", {Plants: result});
+            res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
@@ -91,18 +92,18 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered ascending
-    app.get("/api/plants/ascend", function(req, res) {
+    app.get("/plants/search/sort-asc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
             // $like - does not work
-            [Op.substring]: req.body.plantSearch
+            [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "ASC"]]
         })
         .then(function(result) {
-            res.status(200).render("search", {Plants: result});
+            res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);
@@ -111,18 +112,18 @@ module.exports = function(app) {
 
     // @READ route orders plants by name
     // used as button with plants by search term ordered descending 
-    app.get("/api/plants/descend", function(req, res) {
+    app.get("/plants/search/sort-desc/:term", function(req, res) {
         db.Plants.findAll({
         where: {
             commonName: {
             // $like - does not work
-            [Op.substring]: req.body.plantSearch
+            [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "DESC"]]
         })
         .then(function(result) {
-             res.status(200).render("search", {Plants: result});
+             res.status(200).render("searchresults", {Plants: result});
         })
         .catch(function(err) {
             res.json(err);

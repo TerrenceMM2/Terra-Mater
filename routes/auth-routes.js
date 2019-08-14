@@ -5,7 +5,9 @@ var bcrypt = require('bcryptjs');
 module.exports = function(app, passport) {
    // Dashboard
    app.get('/user-profile', isLoggedIn, function(req, res) {
-      res.render('user-profile');
+      // req.user is passed from passport once successful login
+      userData = req.user
+      res.render('user-profile', userData);
    });
 
    // Login
@@ -15,7 +17,9 @@ module.exports = function(app, passport) {
 
   //  Login proccess
    app.post('/login', passport.authenticate('local-signin'), function(req, res) {
-      res.redirect('/user-profile');
+      res.status(200).json({
+         success: true
+      });
    });
 
    // Register
