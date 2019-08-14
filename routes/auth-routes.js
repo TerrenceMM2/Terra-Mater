@@ -49,7 +49,7 @@ module.exports = function(app, passport) {
 
       if (formErrors) {
          res.status(400).json({
-           formErrors,
+           formErrors: formErrors,
            type: "formError"
         });
       } else {

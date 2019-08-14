@@ -7,12 +7,7 @@
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
         </div>
         <div class="col-lg-6 text-right">
-            <div class="col-lg-6 text-right">
-            <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
-            <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
-            <a class="btn btn-secondary my-5" role="button" href="/register">Register</a>
             <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
-        </div>
         </div>
     </div>
 </div>
@@ -22,7 +17,7 @@
             <h3>Welcome, {{firstName}}.</h3>
         </div>
     </div>
-​
+
     {{!-- search row --}}
     <div class="row">
         <div class="offset-lg-3 col-lg-6">
@@ -44,12 +39,12 @@
             </form>
         </div>
     </div>
-​
+
 </div>
-​
+
 <script>
     $(document).ready(function() {
-​
+
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
             
@@ -61,15 +56,14 @@
                 alert("Please enter a search term");
             }
         });
-​
+
         $("#all-plants-btn").on("click", function(event) {
             event.preventDefault();
             window.location.href = "/api/plant-short";
         });
-​
-        $(".terra-mater-logo").on("click", function() {
-            window.location.href = "/search";
-        });
 
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
     });
 </script>

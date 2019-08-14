@@ -1,26 +1,22 @@
+var passport = require('passport');
+
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    var userData = req.user;
-
+    var userData = req.user
     //Check to see if logged in. If true pass logged in users Data
-    if (!userData) {
-      console.log("User not logged in");
-      res.locals.metaTags = {
-        title: "Terra Mater"
-      }
-      res.render("search", userData);
-    } else {
-      res.locals.metaTags = {
-        title: "Terra Mater"
-      }
-      res.render("search", userData);
-    }
+    res.locals.metaTags = {
+      title: "Terra Mater"
+    };
+    res.render("search", {
+      user: userData,
+      loggedIn: req.isAuthenticated()
+    });
   });
 
   app.get("/register", function(req, res) {
     res.locals.metaTags = {
       title: "Terra Mater | Register"
-    }
+    };
     res.render("register");
   });
 
