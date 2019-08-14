@@ -24,6 +24,9 @@ module.exports = function(app, passport) {
 
    // Register
    app.get('/register', function(req, res) {
+      res.locals.metaTags = {
+         title: "Register"
+       }
       res.render('register');
    });
 

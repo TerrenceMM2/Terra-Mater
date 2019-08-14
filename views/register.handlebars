@@ -1,49 +1,55 @@
-{{!-- logo top left corner --}}
-{{!-- <img src="..." alt="Terra Mater Logo"> --}}
+<div class="container">
+   {{!-- logo and sign in / out--}}
+   <div class="row">
+      <div class="col-lg-6 text-left">
+         <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+      </div>
+      <div class="col-lg-6 text-right">
+         <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
+         <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
+         <a class="btn btn-secondary my-5" role="button" href="/register">Register</a>
+         <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
+      </div>
+   </div>
+</div>
 
-{{!-- insert search bar in top middle --}}
-<form class="form-inline my-2 my-lg-0">
-   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-{{!-- insert get all button for all search results --}}
-<button href="/api/plant-short">Plant Directory</button>
-{{!-- insert sort functionality asc --}}
-{{!-- insert sort functionality desc --}}
+<div class="container">
 
-{{!-- Heading for page --}}
-<h1>Terra Mater</h1>
 <h2>Register Page</h2>
 
 {{!-- Account Creation form --}}
+
 <form id="register" name="register" method="post" action="/register">
+   <div class="form-group">
+      <input class="form-control" placeholder="First Name" name="firstName" type="text" id="firstName" />
+   </div>
+   <div class="form-group">
+      <input class="form-control" placeholder="Last Name" name="lastName" type="text" id="lastName" />
+   </div>
+   <div class="form-group">
+      <input class="form-control" placeholder="Your Email" name="email" type="text" id="email" />
+   </div>
+   <div class="form-group">
+      <input class="form-control" placeholder="Your Password" name="userPassword" type="password" id="userPassword" />
+   </div>
+   <div class="form-group">
+      <input class="form-control" placeholder="Confirm Password" type="password" id="password2" />
+   </div>
+      <button type="submit" class="btn btn-primary">Register</button>
 
-   <p>
-      <input placeholder="First Name"  name="firstName" type="text" id="firstName" />
-   </p>
-   <p>
-      <input placeholder="Last Name"  name="lastName" type="text" id="lastName" />
-   </p>
-   <p>
-      <input placeholder="Your Email" name="email" type="text" id="email" />
-   </p>
-   <p>
-      <input placeholder="Your Password" name="userPassword" type="password" id="userPassword" />
-   </p>
-   <p>
-      <input placeholder="Confirm Password" type="password" id="password2" />
-   </p>
+   </div>
 
-   <input type="submit" value="Sign Up" />
-   
 </form>
 
-<a href="/login"><button>Sign In</button></a>
+<a role="button" class="btn btn-primary" href="/login">Sign In</a>
 
 <div class="error-msg"></div>
 
 {{!-- Displays errors --}}
 <div class="error-msg"></div>
 
+</div>
+
 {{!-- Disclaimer --}}
-<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.</p>
+<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.
+</p>

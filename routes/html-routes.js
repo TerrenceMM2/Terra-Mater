@@ -4,21 +4,26 @@ module.exports = function(app) {
 
     if (!userData) {
       console.log("User not logged in");
-      res.render("index");
+      res.locals.metaTags = {
+        title: "Terra Mater"
+      }
+      res.render("search", userData);
     } else {
-      res.render("index", userData);
+      res.locals.metaTags = {
+        title: "Terra Mater"
+      }
+      res.render("search", userData);
     }
   });
 
   app.get("/register", function(req, res) {
+    res.locals.metaTags = {
+      title: "Terra Mater | Register"
+    }
     res.render("register");
   });
 
   app.get("/plant-profile", function(req, res) {
     res.render("plant-profile");
-  });
-
-  app.get("/search", function(req, res) {
-    res.render("search");
   });
 };

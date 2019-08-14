@@ -62,6 +62,9 @@ module.exports = function(app) {
             }
         }).then(function(results) {
             console.log(results);
+            res.locals.metaTags = {
+                title: "Terra Mater | " + results.dataValues.commonName
+              }
             res.render("plant-profile", results.dataValues);
         });
 
