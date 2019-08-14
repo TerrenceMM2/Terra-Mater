@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 var db = require('../models');
 var bcrypt = require('bcryptjs');
 
