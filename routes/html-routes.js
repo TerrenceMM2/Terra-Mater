@@ -5,14 +5,13 @@ module.exports = function(app) {
     //Check to see if logged in. If true pass logged in users Data
     if (!userData) {
       console.log("User not logged in");
-      res.render('search');
+      res.render("search");
     } else {
-      res.render('search', userData);
+      res.render("search", userData);
     }
   });
 
   app.get("/plant-profile", function(req, res) {
     res.render("plant-profile");
   });
-
 };
