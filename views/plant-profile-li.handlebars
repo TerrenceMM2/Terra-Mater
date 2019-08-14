@@ -57,13 +57,14 @@ $(document).ready(function() {
             "\ncommonName: " + "{{plantData.commonName}}"
         );
 
-        $.post("/api/add-favorite", function(data) {
-            data = {
-                Userid: {{userData.id}},
-                plantId: {{plantData.plantId}},
-                commonName: "{{plantData.commonName}}"
-            }
-        }).then(function(response){
+        var favorite = {
+            Userid: {{userData.id}},
+            plantId: {{plantData.plantId}},
+            commonName: "{{plantData.commonName}}"
+        };
+
+        $.post("/api/add-favorite", favorite)
+        .then(function(response){
             console.log(response)
         });
             

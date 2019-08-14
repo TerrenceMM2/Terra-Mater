@@ -56,11 +56,11 @@ module.exports = function(app) {
 
     // @POST route to add user favorite to table
     app.post("/api/add-favorite", function(req, res) {
-        
+        // console.log(req.body);        
         db.Favorites.create({
-            plantId: req.body.data.plantId,
-            commonName: req.body.data.commonName,
-            Userid: req.body.data.Userid
+            plantId: req.body.plantId,
+            commonName: req.body.commonName,
+            UserId: req.body.Userid
         }).then(function(){
             res.status(200)
         });
