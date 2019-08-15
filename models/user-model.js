@@ -29,5 +29,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  Users.associate = function(models) {
+    // Associating Users with Favorites
+    // When a User is deleted, also delete any associated Favorites
+    Users.hasMany(models.Favorites, {
+      onDelete: "cascade"
+    });
+  };
   return Users;
 };
