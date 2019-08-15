@@ -60,14 +60,34 @@ module.exports = function(app) {
 
    // @POST route to add user favorite to table
    app.post('/api/add-favorite', function(req, res) {
-      // console.log(req.body);
-      db.Favorites.create({
-         plantId: req.body.plantId,
-         commonName: req.body.commonName,
-         UserId: req.body.Userid
-      }).then(function() {
-         res.status(200);
-      });
+    var plantId = Number(req.body.plantId);
+
+    // Check if user already has plant favorited
+    db.Favorites
+        .findOne({
+            where: {
+                plantId: plantId,
+                userId: req.user.id
+            }
+        })
+        .then(item => {
+            // If user hasnt added plant to favorites, then add it
+            if (!item) {
+                db.Favorites
+                    .create({
+                        plantId: req.body.plantId,
+                        commonName: req.body.commonName,
+                        UserId: req.body.Userid
+                    })
+                    .then(function() {
+                        res.status(200);
+                        console.log('Favorite has been added to DB');
+                    });
+            } else {
+                // If user has already favorited plant, then do nothing
+                console.log('Favorite already exists in DB for that user');
+            }
+        });
    });
 
    // =============================================
