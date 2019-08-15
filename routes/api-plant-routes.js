@@ -47,7 +47,10 @@ module.exports = function(app) {
             res.locals.metaTags = {
                 title: "All Plants - Descending"
             };
-            res.status(200).render("plantdir", { Plants: results, loggedIn: req.isAuthenticated() });
+            res.status(200).render("plantdir", { 
+                Plants: results, 
+                loggedIn: req.isAuthenticated() 
+            });
         });
 
     });
@@ -76,6 +79,7 @@ module.exports = function(app) {
 
     // @READ route gets Plant Profile by ID
     app.get("/plant/:id", function(req, res) {
+        var userData = req.user;
         
         db.Plants.findOne({
             where: {
@@ -88,6 +92,7 @@ module.exports = function(app) {
               }
             res.render("plant-profile", { 
                 data: results.dataValues,
+                user: userData,
                 loggedIn: req.isAuthenticated()
             });
         });
