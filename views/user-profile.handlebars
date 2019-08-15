@@ -92,6 +92,7 @@
 
             bsCustomFileInput.init()
 
+            {{!-- Redirect user to searched plant results --}}
             $("#plant-search").on("click", function (event) {
                 event.preventDefault();
 
@@ -104,16 +105,18 @@
                 }
             });
 
+            {{!-- Redirect user to all plants page --}}
             $("#all-plants-btn").on("click", function (event) {
                 event.preventDefault();
                 window.location.href = "/api/plant-short";
             });
 
+            {{!-- Redirect user to homepage --}}
             $(".terra-mater-logo").on("click", function () {
                 window.location.href = "/";
             });
 
-            {{!-- Fav icon redirects to plant profile --}}
+            {{!-- Redirect user to plant profile --}}
             $(".fav-item").on("click", function (event) {
                 event.preventDefault();
 
