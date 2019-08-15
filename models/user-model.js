@@ -23,6 +23,9 @@ module.exports = function(sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    imageFile: {
+      type: DataTypes.TEXT
     }
   });
 

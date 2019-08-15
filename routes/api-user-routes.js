@@ -44,7 +44,7 @@ module.exports = function(app) {
       });
   });
 
-  //edit user details
+  // edit user details
   app.put("/api/user/:id", function(req, res) {
     db.Users.update(
       {
@@ -56,7 +56,7 @@ module.exports = function(app) {
       },
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }
     )
