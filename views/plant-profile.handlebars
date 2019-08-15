@@ -1,9 +1,3 @@
-{{#if userData.id}}
-    <button class="fav-btn">Add Favorite</button>
-{{else}}
-   <h2>Not signed in</h2>
-{{/if}}
-
 <div class="container">
     {{!-- logo and sign in / out--}}
     <div class="row">
@@ -23,7 +17,12 @@
 
 <div class="container">
     <img class="plant-img" src={{data.img}}>
-    <h1 class="plant-name">{{data.commonName}}</h1>
+    <h1 class="plant-name">
+        {{data.commonName}} 
+            {{#if loggedIn}}
+                <span class="fav-btn"><i class="fas fa-heart fav-btn" style="color: red; cursor: pointer" title="Add to Favorites"></i></span>
+            {{/if}}
+    </h1>
     <p>{{data.longDesc}}</p>
     <div class="text-right plant-toggle">
         <span id="profile">Profile   </span>|<span id="care" class="inactive">  Care Instructions</span>
@@ -81,14 +80,15 @@
 
 
         var favorite = {
-            Userid: {{userData.id}},
-            plantId: {{plantData.plantId}},
-            commonName: "{{plantData.commonName}}"
+            Userid: {{user.id}},
+            plantId: {{data.plantId}},
+            commonName: "{{data.commonName}}"
         }
 
         $(".fav-btn").on("click", function() {
-            $.post("/api/add-favorite", favorite {
-            }).then(function(response){
+            console.log('fav icon clicked');
+            $.post("/api/add-favorite", favorite
+            ).then(function(response){
                 console.log(response)
             });
         });
