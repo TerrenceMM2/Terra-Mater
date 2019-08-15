@@ -1,7 +1,8 @@
 module.exports = function(app) {
   app.get("/", function(req, res) {
+    // Logged in user data, else is undefined
     var userData = req.user;
-    //Check to see if logged in. If true pass logged in users Data
+
     res.locals.metaTags = {
       title: "Terra Mater"
     };
