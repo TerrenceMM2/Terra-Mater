@@ -16,7 +16,14 @@ body {
 
 .terra-mater-logo {
     width: 150px;
-    margin: 3rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+.terra-mater-logo-wide {
+    width: 75%;
+    display: block;
+    margin: 1rem auto;
 }
 
 .disclaimer {
@@ -34,3 +41,5 @@ body {
     border-radius: 50%;
     width: 40%;
 }
+
+
