@@ -1,25 +1,27 @@
 <div class="container">
-    {{!-- logo and sign in / out--}}
+    {{!-- logo--}}
     <div class="row">
-        
-        <div class="col-lg-6 text-right">
-            {{#if loggedIn}}
-                <div class="col-lg-6 text-left">
-                    <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
-                </div>
+        {{#if loggedIn}}
+        <div class="col-lg-6 text-left">
+            <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+        </div>
+        {{else}}
+        <div class="col-12">
+            <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
+        </div>
+        {{/if}}
+    
+    {{!-- buttons --}}
+        {{#if loggedIn}}
+            <div class="col-lg-6 text-right">
                 <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
                 <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
-            {{else}}
-                <div class="col-12">
-                    <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
-                </div>
-            {{/if}}
-        </div>
-    </div>
-    <div class="row">
+            </div>
+        {{else}}
         <div class="col-12 text-right">
             <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
         </div>
+        {{/if}}
     </div>
 </div>
 
