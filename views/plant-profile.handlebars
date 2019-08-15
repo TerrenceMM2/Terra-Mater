@@ -78,5 +78,19 @@
         $(".terra-mater-logo").on("click", function() {
             window.location.href = "/";
         });
-    })
+
+
+        var favorite = {
+            Userid: {{userData.id}},
+            plantId: {{plantData.plantId}},
+            commonName: "{{plantData.commonName}}"
+        }
+
+        $(".fav-btn").on("click", function() {
+            $.post("/api/add-favorite", favorite {
+            }).then(function(response){
+                console.log(response)
+            });
+        });
+    });
 </script>
