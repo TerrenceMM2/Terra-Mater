@@ -1,34 +1,39 @@
-{{!-- logo top left corner --}}
-{{!-- <img src="..." alt="Terra Mater Logo"> --}}
+<div class="container">
+   {{!-- logo and sign in / out--}}
+   <div class="row">
+      <div class="col-lg-6 text-left">
+         <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+      </div>
+   </div>
+</div>
 
-{{!-- insert search bar in top middle --}}
-<form class="form-inline my-2 my-lg-0">
-   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-   {{!-- Plant Buttons --}}
-   <button href="/api/plants/search">Search</button>
-</form>
-{{!-- insert get all button for all search results --}}
-<button href="/api/plant-short">Plant Directory</button>
-{{!-- insert sort functionality asc --}}
-{{!-- insert sort functionality desc --}}
+<div class="container">
 
-{{!-- Heading for page --}}
-<h1>Terra Mater</h1>
-<h2>Login Page</h2>
+   {{!-- Heading for page --}}
+   <h1>Login</h1>
 
 
+   {{!-- Form to login --}}
+   <form id="login" name="login" method="get" action="/login">
+      <div class="form-group">
+         <input class="form-control" placeholder="Email" name="email" type="text" id="email" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Password" name="userPassword" type="password" id="userPassword" />
+      </div>
 
+      <button type="submit" class="btn btn-primary">Sign In</button>
+      <a class="btn btn-secondary" role="button" href="/register">Register</a>
+   </form>
+   <div class="error-msg"></div>
+</div>
 
-{{!-- Form to login --}}
-<form id="login" name="login" method="get" action="/login">
+<script>
+   $(document).ready(function() {
 
-   <p>
-      <input placeholder="Email" name="email" type="text" id="email" />
-   </p>
-   <p>
-      <input placeholder="Password" name="userPassword" type="password" id="userPassword" />
-   </p>
+      $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
 
-   <input type="submit" value="Sign In" />
-</form>
-<div class="error-msg"></div>
+   });
+</script>

@@ -23,6 +23,9 @@ module.exports = function(app, passport) {
 
    // Register
    app.get('/register', function(req, res) {
+      res.locals.metaTags = {
+         title: "Register"
+       }
       res.render('register');
    });
 
@@ -46,7 +49,7 @@ module.exports = function(app, passport) {
 
       if (formErrors) {
          res.status(400).json({
-           formErrors,
+           formErrors: formErrors,
            type: "formError"
         });
       } else {

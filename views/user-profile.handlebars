@@ -7,28 +7,58 @@
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
         </div>
         <div class="col-lg-6 text-right">
-            <button type="button" class="btn btn-info my-5 mr-3"><a href="/login">Login</a></button>
-            <button type="button" class="btn btn-secondary my-5"><a href="/register">Register</a></button>
-            <button type="button" class="btn btn-secondary my-5"><a href="/logout">Logout</a></button>
+            <a class="btn btn-secondary my-5" role="button" href="/">Search</a>
+            <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
         </div>
     </div>
-</div>
+
     {{!-- welcome message --}}
     <div class="row my-5">
         <div class="col-lg-12 text-center">
             <h3>Welcome, {{firstName}}.</h3>
         </div>
     </div>
-​
-    {{!-- search row --}}
+
     <div class="row">
+        <div class="container">
+            <div class="row">
+                {{#if profilePicture}}
+                {{else}}
+                <img class="profile-picture" src="/assets/images/generic.png">
+                {{/if}}
+            </div>
+            <div class="row">
+                <div class="col-6 text-right">First Name:</div>
+                <div class="col-6">{{firstName}}</div>
+            </div>
+                        <div class="row">
+                <div class="col-6 text-right">Last Name:</div>
+                <div class="col-6">{{lastName}}</div>
+            </div>
+                        <div class="row">
+                <div class="col-6 text-right">Email:</div>
+                <div class="col-6">{{email}}</div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Add Photo Upload Form --}}
+        {{!-- <div class="mt-3 row justify-content-center">
+                <div class="col-auto custom-file">
+                    <input type="file" class="custom-file-input" id="photo-upload">
+                    <label class="custom-file-label" for="photo-upload">Choose photo</label>
+                </div>
+            </div> --}}
+
+    {{!-- search row --}}
+    {{!-- <div class="row">
         <div class="offset-lg-3 col-lg-6">
             <form>
                 <div class="form-group">
-                    {{!-- <label for="plantSearch">Search</label> --}}
+                   <label for="plantSearch">Search</label>
                     <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
                         placeholder="Look for a plant...">
-                    {{!-- buttons row for form --}}
+                    buttons row for form
                     <div class="row my-3">
                         <div class="col-lg-6 text-left">
                             <button id="plant-search" type="submit" class="btn btn-info">Search</button>
@@ -40,13 +70,13 @@
                 </div>
             </form>
         </div>
-    </div>
-​
-</div>
-​
+    </div> --}}
+
 <script>
     $(document).ready(function() {
-​
+
+         bsCustomFileInput.init()
+
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
             
@@ -58,15 +88,14 @@
                 alert("Please enter a search term");
             }
         });
-​
+
         $("#all-plants-btn").on("click", function(event) {
             event.preventDefault();
             window.location.href = "/api/plant-short";
         });
-​
-        $(".terra-mater-logo").on("click", function() {
-            window.location.href = "/search";
-        });
 
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
     });
 </script>
