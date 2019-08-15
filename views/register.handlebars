@@ -1,24 +1,60 @@
-<h1>Terra Mater</h1>
-<h2>Register Page</h2>
+<div class="container">
+   {{!-- logo and sign in / out--}}
+   <div class="row">
+      <div class="col-lg-6 text-left">
+         <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+      </div>
+      <div class="col-lg-6 text-right">
+         <a class="btn btn-secondary my-5" role="button" href="/">Search</a>
+         <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
+      </div>
+   </div>
+</div>
 
-<form id="register" name="register" method="post" action="/register">
+<div class="container">
 
-   <p>
-      <input placeholder="First Name"  name="firstName" type="text" id="firstName" />
-   </p>
-   <p>
-      <input placeholder="Last Name"  name="lastName" type="text" id="lastName" />
-   </p>
-   <p>
-      <input placeholder="Your Email" name="email" type="text" id="email" />
-   </p>
-   <p>
-      <input placeholder="Your Password" name="userPassword" type="password" id="userPassword" />
-   </p>
-   <p>
-      <input placeholder="Confirm Password" type="password" id="password2" />
-   </p>
+   <h1>Register Page</h1>
 
-   <input type="submit" value="Register" />
+   {{!-- Account Creation form --}}
+
+   <form id="register" name="register" method="post" action="/register">
+      <div class="form-group">
+         <input class="form-control" placeholder="First Name" name="firstName" type="text" id="firstName" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Last Name" name="lastName" type="text" id="lastName" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Your Email" name="email" type="text" id="email" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Your Password" name="userPassword" type="password"
+            id="userPassword" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Confirm Password" type="password" id="password2" />
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+
 </form>
+
+</div>
+
 <div class="error-msg"></div>
+
+{{!-- Displays errors --}}
+<div class="error-msg"></div>
+
+{{!-- Disclaimer --}}
+<p>All information obtained on this website is meant for educational purposes. You assume full risk by using our site.
+</p>
+
+<script>
+   $(document).ready(function() {
+
+      $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
+
+   });
+</script>

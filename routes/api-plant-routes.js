@@ -13,12 +13,11 @@ module.exports = function(app) {
     // for displaying all plants to select from
     app.get("/api/plant-short", function(req, res) {
         
-        db.Plants.findAll({
-            // attributes: ["commonName", "shortDesc", "img"]
-        }).then(function(result) {
-            // res.json(result);
-
-            res.status(200).render("plantdir", {Plants: result});
+        db.Plants.findAll({}).then(function(result) {
+            res.locals.metaTags = {
+                title: "All Plants"
+            };
+            res.status(200).render("plantdir", { Plants: result, loggedIn: req.isAuthenticated() });
         });
 
     });
@@ -28,10 +27,12 @@ module.exports = function(app) {
     app.get("/api/plant-short/asc", function(req, res) {
         
         db.Plants.findAll({
-            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "ASC"]]
         }).then(function(results) {
-            res.status(200).render("plantdir", {Plants: results});
+            res.locals.metaTags = {
+                title: "All Plants - Ascending"
+            };
+            res.status(200).render("plantdir", { Plants: results, loggedIn: req.isAuthenticated() });
         });
 
     });
@@ -41,10 +42,12 @@ module.exports = function(app) {
     app.get("/api/plant-short/desc", function(req, res) {
         
         db.Plants.findAll({
-            // attributes: ["commonName", "shortDesc", "img"],
             order: [["commonName", "DESC"]]
         }).then(function(results) {
-            res.status(200).render("plantdir", {Plants: results});
+            res.locals.metaTags = {
+                title: "All Plants - Descending"
+            };
+            res.status(200).render("plantdir", { Plants: results, loggedIn: req.isAuthenticated() });
         });
 
     });
@@ -74,28 +77,21 @@ module.exports = function(app) {
     // @READ route gets Plant Profile by ID
     app.get("/plant/:id", function(req, res) {
         
-        var userData = req.user;
+        db.Plants.findOne({
+            where: {
+                plantId: req.params.id
+            }
+        }).then(function(results) {
+            console.log(results);
+            res.locals.metaTags = {
+                title: results.dataValues.commonName
+              }
+            res.render("plant-profile", { 
+                data: results.dataValues,
+                loggedIn: req.isAuthenticated()
+            });
+        });
 
-        if (!userData) {
-            db.Plants.findOne({
-                where: {
-                    plantId: req.params.id
-                }
-            }).then(function(results) {
-                res.render("plant-profile", results.dataValues);
-            });
-        } else if (userData) {
-            db.Plants.findOne({
-                where: {
-                    plantId: req.params.id
-                }
-            }).then(function(results) {
-                res.render("plant-profile-li", {
-                    userData,
-                    plantData: results.dataValues
-                });
-            });
-        }
     });
 
 // =============================================
@@ -108,13 +104,15 @@ module.exports = function(app) {
         db.Plants.findAll({
         where: {
             commonName: {
-            // $like - does not work
             [Op.substring]: req.params.term
             }
         }
         })
-        .then(function(result) {
-            res.status(200).render("searchresults", {Plants: result});
+        .then(function(results) {
+            res.locals.metaTags = {
+                title: req.params.term + " - Search Results"
+              };
+            res.status(200).render("searchresults", { Plants: results, loggedIn: req.isAuthenticated()});
         })
         .catch(function(err) {
             res.json(err);
@@ -127,14 +125,16 @@ module.exports = function(app) {
         db.Plants.findAll({
         where: {
             commonName: {
-            // $like - does not work
             [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "ASC"]]
         })
-        .then(function(result) {
-            res.status(200).render("searchresults", {Plants: result});
+        .then(function(results) {
+            res.locals.metaTags = {
+                title: req.params.term + " - Search Results - Ascending"
+              };
+            res.status(200).render("searchresults", { Plants: results, loggedIn: req.isAuthenticated() });
         })
         .catch(function(err) {
             res.json(err);
@@ -147,14 +147,16 @@ module.exports = function(app) {
         db.Plants.findAll({
         where: {
             commonName: {
-            // $like - does not work
             [Op.substring]: req.params.term
             }
         },
         order: [["commonName", "DESC"]]
         })
-        .then(function(result) {
-             res.status(200).render("searchresults", {Plants: result});
+        .then(function(results) {
+            res.locals.metaTags = {
+                title: req.params.term + " - Search Results - Descending"
+              };
+             res.status(200).render("searchresults", { Plants: results, loggedIn: req.isAuthenticated() });
         })
         .catch(function(err) {
             res.json(err);

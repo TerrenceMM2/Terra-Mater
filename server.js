@@ -7,7 +7,8 @@ var PORT = process.env.PORT || 8080;
 var passport = require("passport");
 var session = require("express-session");
 var bodyParser = require("body-parser");
-require("dotenv").config({ path: "/config/.env" });
+
+require("dotenv").config();
 
 var expressValidator = require("express-validator");
 

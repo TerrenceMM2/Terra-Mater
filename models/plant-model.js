@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Plants = sequelize.define('Plants', {
         plantId: {
             type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },
         commonName: {

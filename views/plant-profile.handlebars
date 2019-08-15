@@ -1,11 +1,34 @@
+{{#if userData.id}}
+    <button class="fav-btn">Add Favorite</button>
+{{else}}
+   <h2>Not signed in</h2>
+{{/if}}
+
 <div class="container">
-    <img class="plant-img" src={{img}}>
-    <h1 class="plant-name">{{commonName}}</h1>
-    <p>{{longDesc}}</p>
-    <div class="text-right plant-toggle">
-        <span id="profile">Profile   </span>|<span id="care">  Care Instructions</span>
+    {{!-- logo and sign in / out--}}
+    <div class="row">
+        <div class="col-lg-6 text-left">
+            <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+        </div>
+        <div class="col-lg-6 text-right">
+            {{#if loggedIn}}
+            <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
+            <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
+            {{else}}
+            <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
+            {{/if}}
+        </div>
     </div>
-    <div class="container" id="plant-profile">
+</div>
+
+<div class="container">
+    <img class="plant-img" src={{data.img}}>
+    <h1 class="plant-name">{{data.commonName}}</h1>
+    <p>{{data.longDesc}}</p>
+    <div class="text-right plant-toggle">
+        <span id="profile">Profile   </span>|<span id="care" class="inactive">  Care Instructions</span>
+    </div>
+    <div class="container" id="profile-container">
         <div class="row">
             <div class="col-6">
                 <p>Scientific Name</p>
@@ -13,13 +36,13 @@
                 <p>Poisonous to Animals?</p>
             </div>
             <div class="col-6">
-                <p>{{scienName}}</p>
-                <p>{{poisHuman}}</p>
-                <p>{{poisAnimal}}</p>
+                <p>{{data.scienName}}</p>
+                <p>{{data.poisHuman}}</p>
+                <p>{{data.poisAnimal}}</p>
             </div>
         </div>
     </div>
-        <div class="container" id="plant-care">
+        <div class="container" id="care-container">
         <div class="row">
             <div class="col-6">
                 <p>General Care Instructions</p>
@@ -27,10 +50,33 @@
                 <p>Min. Temp</p>
             </div>
             <div class="col-6">
-                <p>{{genCare}}</p>
-                <p>{{food}}</p>
-                <p>{{minTemp}}</p>
+                <p>{{data.genCare}}</p>
+                <p>{{data.food}}</p>
+                <p>{{data.minTemp}}</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function (){
+
+        $("#profile").on("click", function(){
+            $("#profile-container").show().animate({"opacity": "1"});
+            $("#care-container").hide().animate({"opacity": "0"});
+            $("#profile").removeClass("inactive");
+            $("#care").addClass("inactive");
+        });
+        
+        $("#care").on("click", function(){
+            $("#care-container").show().animate({"opacity": "1"});
+            $("#profile-container").hide().animate({"opacity": "0"});
+            $("#care").removeClass("inactive");
+            $("#profile").addClass("inactive");
+        });
+
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
+    })
+</script>

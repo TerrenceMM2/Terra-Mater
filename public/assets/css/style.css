@@ -1,16 +1,22 @@
+@import url("railway.css");
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 .plant-img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
 }
 
-#plant-care {
+#care-container {
     display: none;
 }
 
 .terra-mater-logo {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    margin: 3rem;
 }
 
 .disclaimer {
@@ -18,6 +24,13 @@
     font-size: smaller;
 }
 
-/* .plant-img, .plant-name, .plant-short-desc {
-    display: inline
-} */
+.inactive {
+    color: lightgrey;
+}
+
+.profile-picture {
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 40%;
+}

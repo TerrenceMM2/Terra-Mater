@@ -1,15 +1,39 @@
-<h1>Terra Mater</h1>
-<h2>Login Page</h2>
+<div class="container">
+   {{!-- logo and sign in / out--}}
+   <div class="row">
+      <div class="col-lg-6 text-left">
+         <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+      </div>
+   </div>
+</div>
 
-<form id="login" name="login" method="post" action="/login">
+<div class="container">
 
-   <p>
-      <input placeholder="Email" name="email" type="text" id="email" />
-   </p>
-   <p>
-      <input placeholder="Password" name="userPassword" type="password" id="userPassword" />
-   </p>
+   {{!-- Heading for page --}}
+   <h1>Login</h1>
 
-   <input type="submit" value="Sign In" />
-</form>
-<div class="error-msg"></div>
+
+   {{!-- Form to login --}}
+   <form id="login" name="login" method="get" action="/login">
+      <div class="form-group">
+         <input class="form-control" placeholder="Email" name="email" type="text" id="email" />
+      </div>
+      <div class="form-group">
+         <input class="form-control" placeholder="Password" name="userPassword" type="password" id="userPassword" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign In</button>
+      <a class="btn btn-secondary" role="button" href="/register">Register</a>
+   </form>
+   <div class="error-msg"></div>
+</div>
+
+<script>
+   $(document).ready(function() {
+
+      $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
+
+   });
+</script>
