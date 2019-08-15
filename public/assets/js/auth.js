@@ -33,7 +33,7 @@ $(document).ready(function() {
     })
       .then(function(res) {
         if (res.success) {
-          window.location.href = "/user-profile";
+          window.location.href = "/login";
         }
       })
       .catch(function(err) {

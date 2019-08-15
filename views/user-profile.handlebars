@@ -15,35 +15,50 @@
     {{!-- welcome message --}}
     <div class="row my-5">
         <div class="col-lg-12 text-center">
-            <h3>Welcome, {{firstName}}.</h3>
+            <h3>Welcome, {{user.firstName}}.</h3>
         </div>
     </div>
 
     <div class="row">
         <div class="container">
             <div class="row">
-                {{#if profilePicture}}
+                {{#if user.profilePicture}}
                 {{else}}
                 <img class="profile-picture" src="/assets/images/generic.png">
                 {{/if}}
             </div>
             <div class="row">
                 <div class="col-6 text-right">First Name:</div>
-                <div class="col-6">{{firstName}}</div>
+                <div class="col-6">{{user.firstName}}</div>
             </div>
-                        <div class="row">
+            <div class="row">
                 <div class="col-6 text-right">Last Name:</div>
-                <div class="col-6">{{lastName}}</div>
+                <div class="col-6">{{user.lastName}}</div>
             </div>
-                        <div class="row">
+            <div class="row">
                 <div class="col-6 text-right">Email:</div>
-                <div class="col-6">{{email}}</div>
+                <div class="col-6">{{user.email}}</div>
             </div>
         </div>
     </div>
+    <h3>My Favorites</h3>
+    {{#if fav}}
+    {{#each fav}}
+    <div class="row">
+        <div class="col-6">
+            {{commonName}}
+            <span class="fav-item" data-plantId="{{plantId}}">
+                <i class="fas fa-info-circle" title="Plant Profile" style="cursor: pointer"></i>
+            </span>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <h5>No favorites</h5>
+    {{/if}}
 
     {{!-- Add Photo Upload Form --}}
-        {{!-- <div class="mt-3 row justify-content-center">
+    {{!-- <div class="mt-3 row justify-content-center">
                 <div class="col-auto custom-file">
                     <input type="file" class="custom-file-input" id="photo-upload">
                     <label class="custom-file-label" for="photo-upload">Choose photo</label>
@@ -72,30 +87,44 @@
         </div>
     </div> --}}
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function () {
 
-         bsCustomFileInput.init()
+            bsCustomFileInput.init()
 
-        $("#plant-search").on("click", function (event) {
-            event.preventDefault();
-            
-            var searchTerm = $("#plantSearch").val().trim();
-            
-            if (searchTerm) {
-                window.location.href = "/plants/search/" + searchTerm;
-            } else {
-                alert("Please enter a search term");
-            }
+            {{!-- Redirect user to searched plant results --}}
+            $("#plant-search").on("click", function (event) {
+                event.preventDefault();
+
+                var searchTerm = $("#plantSearch").val().trim();
+
+                if (searchTerm) {
+                    window.location.href = "/plants/search/" + searchTerm;
+                } else {
+                    alert("Please enter a search term");
+                }
+            });
+
+            {{!-- Redirect user to all plants page --}}
+            $("#all-plants-btn").on("click", function (event) {
+                event.preventDefault();
+                window.location.href = "/api/plant-short";
+            });
+
+            {{!-- Redirect user to homepage --}}
+            $(".terra-mater-logo").on("click", function () {
+                window.location.href = "/";
+            });
+
+            {{!-- Redirect user to plant profile --}}
+            $(".fav-item").on("click", function (event) {
+                event.preventDefault();
+
+                var plantId = $(this).data("plantid")
+                console.log("plant Id: ",plantId)
+                
+                window.location.href = "/plant/"+plantId;
+            });
+
         });
-
-        $("#all-plants-btn").on("click", function(event) {
-            event.preventDefault();
-            window.location.href = "/api/plant-short";
-        });
-
-        $(".terra-mater-logo").on("click", function() {
-            window.location.href = "/";
-        });
-    });
-</script>
+    </script>

@@ -6,7 +6,18 @@ module.exports = function(app, passport) {
    app.get('/user-profile', isLoggedIn, function(req, res) {
       // req.user is passed from passport once user logs in
       userData = req.user
-      res.render('user-profile', userData);
+
+      db.Favorites.findAll({
+         where: {
+            UserId: userData.id
+         }
+      }).then(function(favorites){
+         console.log(favorites);
+         res.render('user-profile', {
+            user: userData,
+            fav: favorites
+         });
+      });
    });
 
    // Login

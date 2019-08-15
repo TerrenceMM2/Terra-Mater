@@ -17,7 +17,12 @@
 
 <div class="container">
     <img class="plant-img" src={{data.img}}>
-    <h1 class="plant-name">{{data.commonName}}</h1>
+    <h1 class="plant-name">
+        {{data.commonName}} 
+            {{#if loggedIn}}
+                <span class="fav-btn"><i class="fas fa-heart fav-btn" style="color: red; cursor: pointer" title="Add to Favorites"></i></span>
+            {{/if}}
+    </h1>
     <p>{{data.longDesc}}</p>
     <div class="text-right plant-toggle">
         <span id="profile">Profile   </span>|<span id="care" class="inactive">  Care Instructions</span>
@@ -72,5 +77,20 @@
         $(".terra-mater-logo").on("click", function() {
             window.location.href = "/";
         });
-    })
+
+
+        var favorite = {
+            Userid: {{user.id}},
+            plantId: {{data.plantId}},
+            commonName: "{{data.commonName}}"
+        }
+
+        $(".fav-btn").on("click", function() {
+            console.log('fav icon clicked');
+            $.post("/api/add-favorite", favorite
+            ).then(function(response){
+                console.log(response)
+            });
+        });
+    });
 </script>
