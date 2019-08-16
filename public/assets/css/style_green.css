@@ -1,0 +1,9 @@
+body {
+    background-color: #c0edc7;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #9EC2A3;
+    background-color: #9EC2A3;
+}

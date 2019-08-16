@@ -1,6 +1,19 @@
 <div class="container">
     {{!-- logo--}}
     <div class="row">
+
+        {{!-- buttons --}}
+        {{#if loggedIn}}
+        <div class="col-lg-6 text-right">
+            <a class="btn btn-secondary" role="button" href="/user-profile">Profile</a>
+            <a class="btn btn-secondary" role="button" href="/logout">Logout</a>
+        </div>
+        {{else}}
+        <div class="col-12 text-right">
+            <a class="btn btn-info" role="button" href="/login">Login</a>
+        </div>
+        {{/if}}
+
         {{#if loggedIn}}
         <div class="col-lg-6 text-left">
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
@@ -10,35 +23,26 @@
             <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
         </div>
         {{/if}}
-    
-    {{!-- buttons --}}
-        {{#if loggedIn}}
-            <div class="col-lg-6 text-right">
-                <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
-                <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
-            </div>
-        {{else}}
-        <div class="col-12 text-right">
-            <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
-        </div>
-        {{/if}}
+
     </div>
-</div>
+
 
     {{!-- search row --}}
-    <div class="row">
+    <div class="row no-gutters">
         <div class="offset-lg-3 col-lg-6">
             <form>
                 <div class="form-group">
                     {{!-- <label for="plantSearch">Search</label> --}}
-                    <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
-                        placeholder="Look for a plant...">
+                    <div class="row no-gutters" id="search-row">
+                        <input type="text" class="form-control" id="plantSearch" aria-describedby="search by plant"
+                            placeholder="Look for a plant...">
+                    </div>
                     {{!-- buttons row for form --}}
-                    <div class="row my-3">
-                        <div class="col-lg-6 text-left">
+                    <div class="row no-gutters">
+                        <div class="col-6 text-left">
                             <button id="plant-search" type="submit" class="btn btn-info">Search</button>
                         </div>
-                        <div class="col-lg-6 text-right">
+                        <div class="col-6 text-right">
                             <button id="all-plants-btn" type="submit" class="btn btn-warning">All Plants</button>
                         </div>
                     </div>
@@ -47,16 +51,21 @@
         </div>
     </div>
 
+    <div class="text-right custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="greenModeToggle">
+        <label class="custom-control-label" for="greenModeToggle">Green Mode</label>
+    </div>
+
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         $("#plant-search").on("click", function (event) {
             event.preventDefault();
-            
+
             var searchTerm = $("#plantSearch").val().trim();
-            
+
             if (searchTerm) {
                 window.location.href = "/plants/search/" + searchTerm;
             } else {
@@ -64,12 +73,12 @@
             }
         });
 
-        $("#all-plants-btn").on("click", function(event) {
+        $("#all-plants-btn").on("click", function (event) {
             event.preventDefault();
             window.location.href = "/api/plant-short";
         });
 
-        $(".terra-mater-logo").on("click", function() {
+        $(".terra-mater-logo").on("click", function () {
             window.location.href = "/";
         });
     });
