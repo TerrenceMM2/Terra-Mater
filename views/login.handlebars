@@ -1,16 +1,22 @@
 <div class="container">
    {{!-- logo and sign in / out--}}
    <div class="row">
-      <div class="col-lg-6 text-left">
-         <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
-      </div>
+      {{#if loggedIn}}
+         <div class="col-lg-6 text-left">
+            <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
+         </div>
+      {{else}}
+         <div class="col-12">
+            <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
+         </div>
+      {{/if}}
    </div>
 </div>
 
 <div class="container">
 
    {{!-- Heading for page --}}
-   <h1>Login</h1>
+   <h3>Login</h3>
 
 
    {{!-- Form to login --}}
@@ -32,6 +38,14 @@
    $(document).ready(function() {
 
       $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
+        });
+
+   });
+
+   $(document).ready(function() {
+
+      $(".terra-mater-logo-wide").on("click", function() {
             window.location.href = "/";
         });
 

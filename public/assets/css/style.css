@@ -16,7 +16,14 @@ body {
 
 .terra-mater-logo {
     width: 150px;
-    margin: 3rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+.terra-mater-logo-wide {
+    width: 75%;
+    display: block;
+    margin: 1rem auto;
 }
 
 .disclaimer {
@@ -33,4 +40,55 @@ body {
     padding: 1rem;
     border-radius: 50%;
     width: 40%;
+}
+
+.favorite {
+    padding-bottom: 3%;
+    margin-bottom: 5%;
+}
+
+
+
+
+.btn {
+    border-radius: 0;
+}
+.btn-info{
+    background-color: #b7ecff;
+    color: #000;
+    border: none;
+    padding: 10px 40px;
+}
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+    transition-duration: 0.3s;
+    background-color:  #a3e7ff;
+}
+.btn-warning {
+    background-color: #fde396;
+    border: none;
+    padding: 10px 40px;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active{
+    transition-duration: 0.3s;
+    background-color: #fdde83;
+}
+.btn-primary {
+    background-color: #7f7fff;
+    border: none;
+    padding: 10px 40px;
+}
+.btn-primary:active,
+.btn-primary:hover,
+.btn-primary:focus
+{ 
+    transition-duration: 0.3s;
+    background-color: #6666ff;
+}
+.btn-secondary {
+    border: none;
+    padding: 10px 40px;
 }

@@ -96,8 +96,8 @@ module.exports = function(app) {
 
    // @READ route gets Plant Profile by ID
    app.get('/plant/:id', function(req, res) {
-      var userData = req.user;
-
+      // var userData = req.user;
+     
       db.Plants.findOne({
          where: {
             plantId: req.params.id
@@ -112,7 +112,9 @@ module.exports = function(app) {
             user: userData,
             loggedIn: req.isAuthenticated()
          });
-      });
+      }).catch(err => {
+         console.log(err)
+      })
    });
 
    // =============================================
