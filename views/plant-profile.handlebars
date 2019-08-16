@@ -59,7 +59,6 @@
 
 <script>
     $(document).ready(function (){
-
         $("#profile").on("click", function(){
             $("#profile-container").show().animate({"opacity": "1"});
             $("#care-container").hide().animate({"opacity": "0"});
@@ -73,18 +72,14 @@
             $("#care").removeClass("inactive");
             $("#profile").addClass("inactive");
         });
-
         $(".terra-mater-logo").on("click", function() {
             window.location.href = "/";
         });
-
-
         var favorite = {
             Userid: {{user.id}},
             plantId: {{data.plantId}},
             commonName: "{{data.commonName}}"
         }
-
         $(".fav-btn").on("click", function() {
             console.log('fav icon clicked');
             $.post("/api/add-favorite", favorite
