@@ -78,7 +78,7 @@ module.exports = function(app) {
                     .create({
                         plantId: req.body.plantId,
                         commonName: req.body.commonName,
-                        userId: req.body.userId
+                        UserId: req.body.userId
                     })
                     .then(function() {
                         res.status(200);
