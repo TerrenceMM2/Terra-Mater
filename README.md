@@ -22,10 +22,10 @@ Terra Mater (Latin for _Mother Earth_) is a community-built database that allows
 ## Screenshots  
 
 **Home Page**  
-![Home Page](../media/Terra Mater - Home.png)
+![Home Page](../media/home.png)
 
 **Home Page (Mobile View)**  
-![Home Page](../media/Terra Mater - Home (Mobile).png)
+![Home Page](../media/home_mobile.png)
 
 - - -
 
