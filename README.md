@@ -22,10 +22,40 @@ Terra Mater (Latin for _Mother Earth_) is a community-built database that allows
 ## Screenshots  
 
 **Home Page**  
-![Home Page](../media/home.png)
+![Home Page](../media/home.png)  
 
 **Home Page (Mobile View)**  
-![Home Page](../media/home_mobile.png)
+![Home Page Mobile](../media/home_mobile.png | width=250)  
+
+**Login Page**  
+![Login Page](../media/login.png)  
+
+**Login Page (Mobile View)**  
+![Login Page Mobile](../media/login_mobile.png | width=250)  
+
+**Register Page**  
+![Register Page](../media/register.png)  
+
+**Register Page (Mobile View)**  
+![Register Page Mobile](../media/register_mobile.png | width=250)  
+
+**User Profile Page**  
+![User Profile Page](../media/user_profile.png)  
+
+**User Profile Page (Mobile View)**  
+![User Profile Page Mobile](../media/user_profile_mobile.png | width=250)  
+
+**Plant Search Page**  
+![Plant Search Page](../media/plant_search.png)  
+
+**Plant Search Page (Mobile View)**  
+![Plant Search Page Mobile](../media/plant_search_mobile.png | width=250)  
+
+**Plant Profile Page**  
+![Plant Profile Page](../media/plant_profile.png)  
+
+**Plant Profile Page (Mobile View)**  
+![Plant Profile Page Mobile](../media/plant_profile_mobile.png | width=250)  
 
 - - -
 
