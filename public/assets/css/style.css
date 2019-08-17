@@ -126,6 +126,109 @@ body {
     padding: 10px 40px;
 }
 
+html {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+
+.btn {
+	border-radius: .25rem;
+}
+
+.btn-info, .btn-warning, .btn-secondary, .btn-danger, .btn-success, .btn-primary {
+    margin-top: 10px;
+    padding: .375rem .75rem;
+}
+
+.btn-info {
+	border-color: #b7ecff;
+}
+
+.btn-danger {
+    color: #000;
+    background-color: #FF928B;
+    border-color: #FF928B;
+}
+
+.btn-success {
+    color: #000;
+    background-color: #c0edc7;
+    border-color: #c0edc7;
+}
+
+.custom-switch {
+    position: relative;
+    bottom: 0;
+    margin-bottom: 1rem;
+}
+
+.custom-control-label {
+    color: #9EC2A3;
+}
+
+/* Search Page */
+#home-search {
+    height: 20vh;
+    display: flex;
+    align-items: flex-end;
+}
+
+#search-row {
+	margin-top: 2rem;
+}
+
+/* Register Container */
+#register-container {
+	margin-top: 15%;
+}
+
+/* Login Page */
+#login-container {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-msg {
+	padding-top: 1rem;
+    position: absolute;
+}
+
+/* Profile Page */
+.col-6 {
+	overflow-wrap: break-word;
+}
+
+h5 {
+   margin-top: 2rem;
+}
+
+/* Search Results Page */
+.sort-asc, .sort-desc, .btn-sm {
+    font-size: .8rem;
+}
+
+.disclaimer {
+ 	margin-top: 1rem;  
+    font-size: x-small;
+}
+
+/* Plant Profile Page */
+.fav-btn {
+	font-size: 1rem;
+}
+
+.plant-toggle {
+	margin: 1rem 0;
+}
+
+a, a:hover {
+    color: 7f7fff;
+    text-decoration: none;
+}
+
+
 @media only screen and (min-width: 1200px) {
     .header {
         margin-top: 3rem;
