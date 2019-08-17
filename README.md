@@ -19,6 +19,46 @@ Terra Mater (Latin for _Mother Earth_) is a community-built database that allows
 
 - - - 
 
+## Screenshots  
+
+**Home Page**  
+![Home Page](../media/Terra Mater - Home.png?raw=true)
+
+**Home Page (Mobile View)**  
+![Home Page](../media/Terra Mater - Home (Mobile).png?raw=true)
+
+- - -
+
+## 🚨 Disclaimer 🚨  
+**All information found on this website is meant for educational purposes. You assume full risk by using our site and agree to use this sample data at your own risk.**
+
+
+- - - 
+
+### Contributors
+[@TerrenceMM2](https://github.com/TerrenceMM2)
+- Project Lead
+- Theme / design
+- Code Reviewer
+
+[@jlato89](https://github.com/jlato89)
+- Passport / User authentification
+- User favorites API route (GET / READ)
+
+[@petewanca](https://github.com/petewanca)
+- Database structure and development
+- Plant data API routes (GET / READ)
+- User favorites API route (PUT / CREATE)
+- Handlebars for data rendering
+
+[@micaelabray](https://github.com/micaelabray)
+- Project Concept
+- Theme / design
+- User data API routes (PUT)
+- Data research
+
+- - - 
+
 ### Contribute  
 
 **Step 1**
