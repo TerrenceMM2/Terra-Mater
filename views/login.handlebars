@@ -1,53 +1,60 @@
 <div class="container">
    {{!-- logo and sign in / out--}}
-   <div class="row">
-      {{#if loggedIn}}
-         <div class="col-lg-6 text-left">
-            <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
-         </div>
-      {{else}}
-         <div class="col-12">
-            <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
-         </div>
-      {{/if}}
+   <div class="row header">
+      <div class="col-12">
+         <img class="terra-mater-logo-wide" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
+      </div>
    </div>
 </div>
 
-<div class="container">
+<div class="container" id="login-container">
 
    {{!-- Heading for page --}}
-   <h3>Login</h3>
-
 
    {{!-- Form to login --}}
-   <form id="login" name="login" method="get" action="/login">
-      <div class="form-group">
-         <input class="form-control" placeholder="Email" name="email" type="text" id="email" />
-      </div>
-      <div class="form-group">
-         <input class="form-control" placeholder="Password" name="userPassword" type="password" id="userPassword" />
-      </div>
+   <div class="row no-gutters">
+      <div class="offset-lg-3 col-lg-6">
 
-      <button type="submit" class="btn btn-primary">Sign In</button>
-      <a class="btn btn-secondary" role="button" href="/register">Register</a>
-   </form>
-   <div class="error-msg"></div>
+         <h3>Login</h3>
+
+         <form id="login" name="login" method="get" action="/login">
+            <div class="form-group">
+               <input class="form-control" placeholder="Email" name="email" type="text" id="email" />
+            </div>
+            <div class="form-group">
+               <input class="form-control" placeholder="Password" name="userPassword" type="password"
+                  id="userPassword" />
+            </div>
+            <div class="d-flex">
+               <button type="submit" class="btn btn-info mr-auto">Sign In</button>
+               <a class="btn btn-success ml-auto" role="button" href="/register">Register</a>
+            </div>
+         </form>
+
+         <div class="error-msg"></div>
+      </div>
+   </div>
+   
 </div>
 
 <script>
-   $(document).ready(function() {
+   $(document).ready(function () {
+
+      $(".terra-mater-logo").on("click", function () {
+         window.location.href = "/";
+      });
+
+   });
+
+   $(document).ready(function () {
 
       $(".terra-mater-logo").on("click", function() {
             window.location.href = "/";
         });
 
-   });
-
-   $(document).ready(function() {
-
-      $(".terra-mater-logo-wide").on("click", function() {
-            window.location.href = "/";
-        });
+      $(".terra-mater-logo-wide").on("click", function () {
+         window.location.href = "/";
+      });
 
    });
 </script>

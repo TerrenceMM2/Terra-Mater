@@ -1,19 +1,22 @@
 {{!-- <p><a href="/logout">Logout</a></p> --}}
 
-<div class="container">
+<div class="container header">
     {{!-- logo and sign in / out--}}
     <div class="row">
-        <div class="col-lg-6 text-left">
+
+        <div class="col-5">
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
         </div>
-        <div class="col-lg-6 text-right">
-            <a class="btn btn-secondary my-5" role="button" href="/">Search</a>
-            <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
+
+        <div class="col-7 text-right">
+            <a class="btn btn-success" role="button" href="/">Search</a>
+            <a class="btn btn-danger" role="button" href="/logout">Logout</a>
         </div>
+
     </div>
 
     {{!-- welcome message --}}
-    <div class="row my-5">
+    <div class="row mt-5">
         <div class="col-lg-12 text-center">
             <h3>Welcome, {{user.firstName}}.</h3>
         </div>
@@ -41,15 +44,15 @@
             </div>
         </div>
     </div>
-    <h3>My Favorites</h3>
+    <h5>My Favorites</h5>
     {{#if fav}}
     {{#each fav}}
     <div class="row favorite">
-        <div class="col-6">
+        <div class="col-12">
+            <a class="fav-item" href="/plant/{{plantId}}">
             {{commonName}}
-            <span class="fav-item" data-plantId="{{plantId}}">
-                <i class="fas fa-info-circle" title="Plant Profile" style="cursor: pointer"></i>
-            </span>
+                <i class="fas fa-xs fa-info-circle" title="Plant Profile" style="cursor: pointer"></i>
+            </a>
         </div>
     </div>
     {{/each}}
@@ -104,26 +107,10 @@
                     alert("Please enter a search term");
                 }
             });
-
-            {{!-- Redirect user to all plants page --}}
-            $("#all-plants-btn").on("click", function (event) {
-                event.preventDefault();
-                window.location.href = "/api/plant-short";
-            });
-
+            
             {{!-- Redirect user to homepage --}}
             $(".terra-mater-logo").on("click", function () {
                 window.location.href = "/";
-            });
-
-            {{!-- Redirect user to plant profile --}}
-            $(".fav-item").on("click", function (event) {
-                event.preventDefault();
-
-                var plantId = $(this).data("plantid")
-                console.log("plant Id: ",plantId)
-                
-                window.location.href = "/plant/"+plantId;
             });
 
         });

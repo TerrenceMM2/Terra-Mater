@@ -1,13 +1,19 @@
 @import url("railway.css");
 
+html {
+    overflow-y: overlay;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
 }
 
 .plant-img {
-    width: 200px;
-    height: 200px;
     border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
 }
 
 #care-container {
@@ -15,7 +21,7 @@ body {
 }
 
 .terra-mater-logo {
-    width: 150px;
+    width: inherit;
     display: block;
     margin: 1rem auto;
 }
@@ -23,7 +29,7 @@ body {
 .terra-mater-logo-wide {
     width: 75%;
     display: block;
-    margin: 1rem auto;
+    margin: 5rem auto 1rem auto;
 }
 
 .disclaimer {
@@ -42,53 +48,108 @@ body {
     width: 40%;
 }
 
-.favorite {
-    padding-bottom: 3%;
-    margin-bottom: 5%;
-}
-
-
-
-
-.btn {
-    border-radius: 0;
-}
-.btn-info{
+.btn-info {
     background-color: #b7ecff;
     color: #000;
-    border: none;
+    border-color: #b7ecff;
     padding: 10px 40px;
 }
+
 .btn-info:hover,
 .btn-info:focus,
 .btn-info:active {
-    transition-duration: 0.3s;
-    background-color:  #a3e7ff;
+    color: #000;
+    transition-duration: 0.2s;
+    background-color: #96C2D1;
+    border-color: #96C2D1;
 }
+
 .btn-warning {
     background-color: #fde396;
     border: none;
     padding: 10px 40px;
 }
+
 .btn-warning:hover,
 .btn-warning:focus,
-.btn-warning:active{
-    transition-duration: 0.3s;
-    background-color: #fdde83;
+.btn-warning:active {
+    transition-duration: 0.2s;
+    background-color: #D0B66C;
+    border-color: #D0B66C;
 }
+
+.btn-danger {
+    background-color: #FF928B;
+    border: none;
+    padding: 10px 40px;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+    color: #000;
+    transition-duration: 0.2s;
+    background-color: #D17872;
+    border-color: #D17872;
+}
+
+.btn-success {
+    background-color: #c0edc7;
+    border: none;
+    padding: 10px 40px;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    color: #000;
+    transition-duration: 0.2s;
+    background-color: #9EC2A3;
+    border-color: #9EC2A3;
+}
+
 .btn-primary {
     background-color: #7f7fff;
     border: none;
     padding: 10px 40px;
 }
+
 .btn-primary:active,
 .btn-primary:hover,
-.btn-primary:focus
-{ 
-    transition-duration: 0.3s;
-    background-color: #6666ff;
+.btn-primary:focus {
+    transition-duration: 0.2s;
+    background-color: #8E8ED1;
+    border-color: #8E8ED1;
 }
+
 .btn-secondary {
-    border: none;
     padding: 10px 40px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .header {
+        margin-top: 3rem;
+    }
+
+    .terra-mater-logo {
+        width: 200px;
+    }
+
+    .plant-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .plant-container {
+        width: 60%;
+        margin-top: 4rem;
+    }
+
+    .plant-name {
+        margin-top: 1rem;
+    }
+
+    .profile-picture {
+        width: 30%;
+    }
 }
