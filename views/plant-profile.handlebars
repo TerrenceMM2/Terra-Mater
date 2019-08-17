@@ -79,8 +79,6 @@
 <script>
     $(document).ready(function () {
 
-        console.log("hello");
-
         $("#profile").on("click", function () {
             console.log("click")
             $("#profile-container").show().animate({
@@ -94,7 +92,6 @@
         });
 
         $("#care").on("click", function () {
-            console.log("click")
             $("#care-container").show().animate({
                 "opacity": "1"
             });
@@ -110,10 +107,9 @@
         });
 
         $(".fav-btn").on("click", function () {
-
             var favorite = {
-                userId: {{user.id}},
-                plantId: {{data.plantId}},
+                userId: "{{user.id}}",
+                plantId: "{{data.plantId}}",
                 commonName: "{{data.commonName}}"
             };
 
