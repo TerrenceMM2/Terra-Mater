@@ -1,47 +1,66 @@
 <div class="container">
-    {{!-- logo and sign in / out--}}
-    <div class="row">
-        <div class="col-lg-6 text-left">
+    <div class="row header">
+        {{!-- logo and sign in / out--}}
+        {{#if loggedIn}}
+        <div class="col-5 text-left">
             <img class="terra-mater-logo" src="/assets/images/tm-logo.png" alt="Terra Mater Logo">
         </div>
-        <div class="col-lg-6 text-right">
-            {{#if loggedIn}}
-            <a class="btn btn-secondary my-5" role="button" href="/user-profile">Profile</a>
-            <a class="btn btn-secondary my-5" role="button" href="/logout">Logout</a>
-            {{else}}
-            <a class="btn btn-info my-5 mr-3" role="button" href="/login">Login</a>
-            {{/if}}
+        {{/if}}
+
+        {{!-- buttons --}}
+        {{#if loggedIn}}
+        <div class="col-7 text-right">
+            <a class="btn btn-success" role="button" href="/user-profile">Profile</a>
+            <a class="btn btn-danger" role="button" href="/logout">Logout</a>
         </div>
+        {{else}}
+        <div class="col-12 text-right">
+            <a class="btn btn-info" role="button" href="/login">Login</a>
+        </div>
+        {{/if}}
+
+        {{!-- logo --}}
+
+        {{#if loggedIn}}
+        {{else}}
+        <div class="col-12">
+            <img class="terra-mater-logo-wide mt-3" src="/assets/images/tm-logo-wide.png" alt="Terra Mater Wide Logo">
+        </div>
+        {{/if}}
     </div>
 </div>
 
-<div class="container">
+<div class="container plant-container">
     <img class="plant-img" src={{data.img}}>
-    <h1 class="plant-name">
-        {{data.commonName}} 
-            {{#if loggedIn}}
-                <span class="fav-btn"><i class="fas fa-heart fav-btn" style="color: red; cursor: pointer" title="Add to Favorites"></i></span>
-            {{/if}}
-    </h1>
+    <h3 class="plant-name">
+        {{data.commonName}}
+        {{#if loggedIn}}
+        <span class="fav-btn"><i class="fas fa-xs fa-heart fav-btn" style="color: red; cursor: pointer"
+                title="Add to Favorites"></i></span>
+        {{/if}}
+    </h3>
     <p>{{data.longDesc}}</p>
-    <div class="text-right plant-toggle">
-        <span id="profile">Profile   </span>|<span id="care" class="inactive">  Care Instructions</span>
+    <div class="row plant-toggle">
+        <div class="col-12 text-center">
+            <button id="profile" class="btn btn-light">Profile</button>
+            <button id="care" class="btn btn-light inactive">Care Instructions</button>
+        </div>
     </div>
     <div class="container" id="profile-container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-6 text-right">
                 <p>Scientific Name</p>
                 <p>Poisonous to Humans?</p>
                 <p>Poisonous to Animals?</p>
             </div>
-            <div class="col-6">
+            <div class="col-6 details">
                 <p>{{data.scienName}}</p>
                 <p>{{data.poisHuman}}</p>
                 <p>{{data.poisAnimal}}</p>
             </div>
         </div>
     </div>
-        <div class="container" id="care-container">
+    <div class="container" id="care-container">
         <div class="row">
             <div class="col-6">
                 <p>General Care Instructions</p>
@@ -58,34 +77,57 @@
 </div>
 
 <script>
-    $(document).ready(function (){
-        $("#profile").on("click", function(){
-            $("#profile-container").show().animate({"opacity": "1"});
-            $("#care-container").hide().animate({"opacity": "0"});
+    $(document).ready(function () {
+
+        console.log("hello");
+
+        $("#profile").on("click", function () {
+            console.log("click")
+            $("#profile-container").show().animate({
+                "opacity": "1"
+            });
+            $("#care-container").hide().animate({
+                "opacity": "0"
+            });
             $("#profile").removeClass("inactive");
             $("#care").addClass("inactive");
         });
-        
-        $("#care").on("click", function(){
-            $("#care-container").show().animate({"opacity": "1"});
-            $("#profile-container").hide().animate({"opacity": "0"});
+
+        $("#care").on("click", function () {
+            console.log("click")
+            $("#care-container").show().animate({
+                "opacity": "1"
+            });
+            $("#profile-container").hide().animate({
+                "opacity": "0"
+            });
             $("#care").removeClass("inactive");
             $("#profile").addClass("inactive");
         });
-        $(".terra-mater-logo").on("click", function() {
+
+        $(".terra-mater-logo").on("click", function () {
             window.location.href = "/";
         });
-        var favorite = {
-            Userid: {{user.id}},
-            plantId: {{data.plantId}},
-            commonName: "{{data.commonName}}"
-        }
-        $(".fav-btn").on("click", function() {
-            console.log('fav icon clicked');
-            $.post("/api/add-favorite", favorite
-            ).then(function(response){
+
+        $(".fav-btn").on("click", function () {
+
+            var favorite = {
+                userId: {{user.id}},
+                plantId: {{data.plantId}},
+                commonName: "{{data.commonName}}"
+            };
+
+            $.post("/api/add-favorite", favorite).then(function (response) {
                 console.log(response)
             });
+        });
+
+        $(".terra-mater-logo-wide").on("click", function() {
+            window.location.href = "/";
+        });
+
+        $(".terra-mater-logo").on("click", function() {
+            window.location.href = "/";
         });
     });
 </script>

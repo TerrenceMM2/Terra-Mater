@@ -72,18 +72,20 @@ module.exports = function(app) {
         })
         .then(item => {
             // If user hasnt added plant to favorites, then add it
+            console.log(item);
             if (!item) {
                 db.Favorites
                     .create({
                         plantId: req.body.plantId,
                         commonName: req.body.commonName,
-                        UserId: req.body.Userid
+                        userId: req.body.userId
                     })
                     .then(function() {
                         res.status(200);
                         console.log('Favorite has been added to DB');
                     });
             } else {
+               console.log(item);
                 // If user has already favorited plant, then do nothing
                 console.log('Favorite already exists in DB for that user');
             }
@@ -96,7 +98,7 @@ module.exports = function(app) {
 
    // @READ route gets Plant Profile by ID
    app.get('/plant/:id', function(req, res) {
-      // var userData = req.user;
+      var userData = req.user;
      
       db.Plants.findOne({
          where: {
@@ -137,6 +139,7 @@ module.exports = function(app) {
             };
             res.status(200).render('searchresults', {
                Plants: results,
+               term: req.params.term,
                loggedIn: req.isAuthenticated()
             });
          })
@@ -162,6 +165,7 @@ module.exports = function(app) {
             };
             res.status(200).render('searchresults', {
                Plants: results,
+               term: req.params.term,
                loggedIn: req.isAuthenticated()
             });
          })
@@ -187,6 +191,7 @@ module.exports = function(app) {
             };
             res.status(200).render('searchresults', {
                Plants: results,
+               term: req.params.term,
                loggedIn: req.isAuthenticated()
             });
          })

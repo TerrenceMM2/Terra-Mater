@@ -12,7 +12,9 @@ module.exports = function(app, passport) {
             UserId: userData.id
          }
       }).then(function(favorites){
-         console.log(favorites);
+         res.locals.metaTags = {
+            title: "Welcome, " + userData.firstName + "."
+          }
          res.render('user-profile', {
             user: userData,
             fav: favorites
@@ -22,6 +24,9 @@ module.exports = function(app, passport) {
 
    // Login
    app.get('/login', function(req, res) {
+      res.locals.metaTags = {
+         title: "Login"
+       }
       res.render('login');
    });
 
