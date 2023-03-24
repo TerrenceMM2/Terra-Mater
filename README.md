@@ -1,7 +1,4 @@
 # Terra Mater  <img align="right" width="100" height="100" src="../media/icon.png">
-Live Link: https://terramater.herokuapp.com/  
-
-- - - 
 
 ## Purpose  
 Terra Mater (Latin for _Mother Earth_) is a community-built database that allows users to search, favorite, create new plant data and care information in order to better care for their own plants.
